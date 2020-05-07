@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="mainActivity_emailFieldPlaceholder">E-mail</string>
+    <string name="mainActivity_passwordFieldPlaceholder">Parola</string>
+    <string name="mainActivity_loginButtonText">Login</string>
+    <string name="mainActivity_registerButtonText">Inregistrare</string>
+</resources>

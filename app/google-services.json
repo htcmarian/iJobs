@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "808030574742",
+    "firebase_url": "https://ijobs-e70b5.firebaseio.com",
+    "project_id": "ijobs-e70b5",
+    "storage_bucket": "ijobs-e70b5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:808030574742:android:e647db4a10f1fdc4b7cab7",
+        "android_client_info": {
+          "package_name": "com.example.ijobs"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "808030574742-824chb7goqtcqeqerhbkfce0u72tbc5e.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.ijobs",
+            "certificate_hash": "43924af54fbedd0579293f52910381322ca19337"
+          }
+        },
+        {
+          "client_id": "808030574742-90ehtsgff24kuat9o0q9jl3tb66dbe7p.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDofOayKQD5YX34s5y575b7e1Y84nsezkI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "808030574742-90ehtsgff24kuat9o0q9jl3tb66dbe7p.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
