@@ -3,30 +3,29 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:layout_height="match_parent">
 
-    <Button
-        android:id="@+id/mainActivity_jobSeekerButton"
+    <EditText
+        android:id="@+id/create_job_seeker_profile_phoneNumberInput"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="onJobSeekerButtonClick"
-        android:text="@string/mainActivity_jobSeekerButtonText"
-        app:layout_constraintBottom_toTopOf="@+id/mainActivity_jobRecruiterButton"
+        android:ems="10"
+        android:hint="@string/create_job_seeker_profile_phoneNumberPlaceholder"
+        android:inputType="phone"
+        app:layout_constraintBottom_toTopOf="@+id/create_job_seeker_profile_nextButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/mainActivity_jobRecruiterButton"
+        android:id="@+id/create_job_seeker_profile_nextButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="onJobRecruiterButtonClick"
-        android:text="@string/mainActivity_jobRecruiterButtonText"
+        android:text="@string/create_job_seeker_profile_nextButtonText"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/mainActivity_jobSeekerButton" />
+        app:layout_constraintTop_toBottomOf="@+id/create_job_seeker_profile_phoneNumberInput" />
 </androidx.constraintlayout.widget.ConstraintLayout>

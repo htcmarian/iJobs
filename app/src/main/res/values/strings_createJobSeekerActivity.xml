@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="create_job_seeker_profile_namePlaceholder">Nume</string>
+    <string name="create_job_seeker_profile_birthdatePlaceholder">Data nasterii</string>
+    <string name="create_job_seeker_profile_addressFieldPlaceholder">Adresa</string>
+    <string name="create_job_seeker_profile_addressPostCodePlaceholder">Cod postal</string>
+    <string name="create_job_seeker_profile_addressCityPlaceholder">Oras</string>
+    <string name="create_job_seeker_profile_phoneNumberPlaceholder">Numar telefon</string>
+    <string name="create_job_seeker_profile_nextButtonText">Mergi mai departe</string>
+    <string name="create_job_seeker_profile_completeButtonText">Creeaza Profil</string>
+</resources>

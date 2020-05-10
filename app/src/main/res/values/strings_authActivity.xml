@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="authActivity_emailFieldPlaceholder">E-mail</string>
+    <string name="authActivity_passwordFieldPlaceholder">Parola</string>
+    <string name="authActivity_loginButtonText">Login</string>
+    <string name="authActivity_registerButtonText">Inregistrare</string>
+</resources>

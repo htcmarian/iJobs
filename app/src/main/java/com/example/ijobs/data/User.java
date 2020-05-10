@@ -3,9 +3,10 @@ package com.example.ijobs.data;
 public class User {
     private String email;
     private String userId;
+    private JobSeekerCv jobSeekerCv;
 
-    public User(String email){
-        this.email = email;
+    public User(){
+
     }
 
     public User(String userId, String email) {
@@ -28,5 +29,13 @@ public class User {
 
     public void setUserId(String userId) {
         this.userId = userId;
+    }
+
+    public JobSeekerCv getJobSeekerCv() {
+        return jobSeekerCv;
+    }
+
+    public void setJobSeekerCv(JobSeekerCv jobSeekerCv) {
+        this.jobSeekerCv = jobSeekerCv;
     }
 }

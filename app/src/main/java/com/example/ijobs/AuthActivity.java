@@ -11,11 +11,9 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.ijobs.repositories.UserRepository;
 import com.example.ijobs.services.AuthService;
+import com.example.ijobs.services.UserService;
 import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -25,7 +23,7 @@ public class AuthActivity extends AppCompatActivity {
     private TextView errorTextMessage;
 
     private AuthService authService;
-    private UserRepository userRepository;
+    private UserService userService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +33,7 @@ public class AuthActivity extends AppCompatActivity {
         initializeComponents();
 
         authService = new AuthService();
-        userRepository = new UserRepository();
+        userService = new UserService();
     }
 
     public void onLoginButtonClick(View view) {
@@ -45,12 +43,12 @@ public class AuthActivity extends AppCompatActivity {
             final String email = emailField.getText().toString();
             String password = passwordField.getText().toString();
 
-            authService.login(email, password).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
-                @Override
-                public void onSuccess(AuthResult authResult) {
-                    NavigateToOfferListScreen();
-                }
-            });
+            authService
+                    .login(email, password)
+                    .addOnSuccessListener(authResult -> NavigateToOfferListScreen())
+                    .addOnFailureListener(e -> {
+                        Log.e("EROARE", e.getMessage());
+                    });
         }
     }
 
@@ -62,38 +60,25 @@ public class AuthActivity extends AppCompatActivity {
             String password = passwordField.getText().toString();
 
             authService.register(email, password)
-                    .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
-                        @Override
-                        public void onSuccess(AuthResult authResult) {
-                            FirebaseUser user = authService.getUser();
-                            String userId = user.getUid();
+                    .addOnSuccessListener(authResult -> {
+                        FirebaseUser user = authService.getUser();
+                        String userId = user.getUid();
 
-                            userRepository.createUser(userId, email).addOnSuccessListener(new OnSuccessListener<Void>() {
-                                @Override
-                                public void onSuccess(Void aVoid) {
-                                    NavigateToOfferListScreen();
-                                }
-                            }).addOnFailureListener(new OnFailureListener() {
-                                @Override
-                                public void onFailure(@NonNull Exception e) {
-                                    errorTextMessage.setText("A intervenit o eroare. Incercati din nou");
-                                }
-                            });
-                        }
+                        userService
+                                .createUser(userId, email)
+                                .addOnSuccessListener(aVoid -> NavigateToOfferListScreen())
+                                .addOnFailureListener(e -> errorTextMessage.setText("A intervenit o eroare. Incercati din nou"));
                     })
-                    .addOnFailureListener(new OnFailureListener() {
-                        @Override
-                        public void onFailure(@NonNull Exception e) {
-                            if (e instanceof FirebaseAuthUserCollisionException) {
-                                errorTextMessage.setText("Exista deja un cont asociat email-ului");
-                            }
+                    .addOnFailureListener(e -> {
+                        if (e instanceof FirebaseAuthUserCollisionException) {
+                            errorTextMessage.setText("Exista deja un cont asociat email-ului");
                         }
                     });
         }
     }
 
     private void NavigateToOfferListScreen() {
-        Intent navigateToOfferListIntent = new Intent(AuthActivity.this, OfferListActivity.class);
+        Intent navigateToOfferListIntent = new Intent(AuthActivity.this, MainActivity.class);
         navigateToOfferListIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
 
         startActivity(navigateToOfferListIntent);

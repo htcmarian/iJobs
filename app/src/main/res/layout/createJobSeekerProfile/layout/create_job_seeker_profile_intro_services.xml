@@ -2,31 +2,29 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linearLayout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:layout_height="match_parent">
 
-    <Button
-        android:id="@+id/mainActivity_jobSeekerButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="onJobSeekerButtonClick"
-        android:text="@string/mainActivity_jobSeekerButtonText"
-        app:layout_constraintBottom_toTopOf="@+id/mainActivity_jobRecruiterButton"
+    <ListView
+        android:id="@+id/create_job_seeker_profile_services_list"
+        android:layout_width="410dp"
+        android:layout_height="466dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/mainActivity_jobRecruiterButton"
+        android:id="@+id/create_job_seeker_profile_nextButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="onJobRecruiterButtonClick"
-        android:text="@string/mainActivity_jobRecruiterButtonText"
+        android:enabled="false"
+        android:text="@string/create_job_seeker_profile_completeButtonText"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/mainActivity_jobSeekerButton" />
+        app:layout_constraintTop_toBottomOf="@+id/create_job_seeker_profile_services_list" />
 </androidx.constraintlayout.widget.ConstraintLayout>

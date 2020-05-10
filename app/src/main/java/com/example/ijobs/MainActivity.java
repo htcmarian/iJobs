@@ -1,47 +1,50 @@
 package com.example.ijobs;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ProgressBar;
+import android.widget.Toast;
 
-import com.example.ijobs.services.AuthService;
+import com.example.ijobs.data.User;
+import com.example.ijobs.services.UserService;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.firestore.DocumentSnapshot;
 
 public class MainActivity extends AppCompatActivity {
 
-    private AuthService authService;
-    private ProgressBar loadingSpinner;
+    private UserService userService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        initializeComponents();
 
-        authService = new AuthService();
-
-        redirectToActivity();
+        userService = new UserService();
     }
 
-    private void initializeComponents() {
-        loadingSpinner = findViewById(R.id.mainActivity_loadingSpinner);
+    public void onJobSeekerButtonClick(View view) {
+        userService
+                .getCurrentUser()
+                .addOnSuccessListener(documentSnapshot -> {
+                    User user = documentSnapshot.toObject(User.class);
+                    if(user.getJobSeekerCv() == null){
+                        Intent createJobSeekerProfileIntent = new Intent(this, CreateJobSeekerProfileActivity.class);
+                        startActivity(createJobSeekerProfileIntent);
+                    }
+                    else{
+                        Toast.makeText(this, "A mers", Toast.LENGTH_LONG);
+                    }
+                })
+                .addOnFailureListener(e -> {
+                    Toast.makeText(this, "eroare", Toast.LENGTH_LONG);
+                });
     }
 
-    private void redirectToActivity(){
-        if(authService.getUser() != null){
-            Intent authActivityIntent = new Intent(this, AuthActivity.class);
-            authActivityIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+    public void onJobRecruiterButtonClick(View view) {
 
-            startActivity(authActivityIntent);
-        }
-        else{
-            Intent offerListActivityIntent = new Intent(this, OfferListActivity.class);
-            offerListActivityIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-
-            startActivity(offerListActivityIntent);
-        }
     }
 }
