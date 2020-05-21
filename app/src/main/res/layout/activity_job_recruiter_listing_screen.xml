@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.jobRecruiter.JobRecruiterListingScreen">
+
+    <Button
+        android:id="@+id/job_recruiter_listing_screen_add_jobPostButton"
+        style="@style/Widget.AppCompat.Button.Small"
+        android:layout_width="56dp"
+        android:layout_height="54dp"
+        android:layout_marginBottom="50dp"
+        android:text="@string/job_recruiter_listing_screen_addJobPost_buttonText"
+        android:onClick="onCreateAdButtonClick"
+        app:layout_constraintBottom_toTopOf="@+id/job_recruiter_listing_screen_person_filterScrollView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <ScrollView
+        android:id="@+id/job_recruiter_listing_screen_person_filterScrollView"
+        android:layout_width="409dp"
+        android:layout_height="66dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="91dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </ScrollView>
+
+    <ListView
+        android:id="@+id/job_recruiter_listing_screen_seeker_list"
+        android:layout_width="398dp"
+        android:layout_height="505dp"
+        android:layout_marginTop="192dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.304"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/job_recruiter_listing_screen_person_filterScrollView"
+        app:layout_constraintVertical_bias="1.0" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

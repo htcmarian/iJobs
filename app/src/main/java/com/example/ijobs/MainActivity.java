@@ -1,6 +1,5 @@
 package com.example.ijobs;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -8,11 +7,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
+import com.example.ijobs.activities.jobRecruiter.JobRecruiterListingScreen;
+import com.example.ijobs.activities.jobSeeker.CreateJobSeekerProfileActivity;
+import com.example.ijobs.activities.jobSeeker.JobSeekerListingScreen;
 import com.example.ijobs.data.User;
 import com.example.ijobs.services.UserService;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.firestore.DocumentSnapshot;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -32,11 +31,12 @@ public class MainActivity extends AppCompatActivity {
                 .addOnSuccessListener(documentSnapshot -> {
                     User user = documentSnapshot.toObject(User.class);
                     if(user.getJobSeekerCv() == null){
-                        Intent createJobSeekerProfileIntent = new Intent(this, CreateJobSeekerProfileActivity.class);
-                        startActivity(createJobSeekerProfileIntent);
+                        Intent createJobSeekerProfileActivity = new Intent(this, CreateJobSeekerProfileActivity.class);
+                        startActivity(createJobSeekerProfileActivity);
                     }
                     else{
-                        Toast.makeText(this, "A mers", Toast.LENGTH_LONG);
+                        Intent jobSeekerListingScreenActivity = new Intent(this, JobSeekerListingScreen.class);
+                        startActivity(jobSeekerListingScreenActivity);
                     }
                 })
                 .addOnFailureListener(e -> {
@@ -45,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onJobRecruiterButtonClick(View view) {
-
+        Intent intent = new Intent(this, JobRecruiterListingScreen.class);
+        startActivity(intent);
     }
 }

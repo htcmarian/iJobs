@@ -1,4 +1,4 @@
-package com.example.ijobs.fragments.createJobSeeker;
+package com.example.ijobs.fragments.createUserProfile;
 
 import android.os.Bundle;
 import android.text.Editable;
@@ -13,7 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import com.example.ijobs.CreateJobSeekerProfileActivity;
+import com.example.ijobs.CreateUserProfileActivity;
 import com.example.ijobs.R;
 
 public class IntroPhoneNumberFragment extends Fragment {
@@ -24,7 +24,7 @@ public class IntroPhoneNumberFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.create_job_seeker_profile_intro_telephone, container, false);
+        View view = inflater.inflate(R.layout.create_user_profile_intro_telephone, container, false);
 
         initializeComponents(view);
 
@@ -32,8 +32,8 @@ public class IntroPhoneNumberFragment extends Fragment {
     }
 
     private void initializeComponents(View view) {
-        phoneNumberField = view.findViewById(R.id.create_job_seeker_profile_phoneNumberInput);
-        nextButton = view.findViewById(R.id.create_job_seeker_profile_nextButton);
+        phoneNumberField = view.findViewById(R.id.create_user_profile_phoneNumberInput);
+        nextButton = view.findViewById(R.id.create_user_profile_nextButton);
 
         phoneNumberField.addTextChangedListener(new TextWatcher() {
             @Override
@@ -54,9 +54,9 @@ public class IntroPhoneNumberFragment extends Fragment {
         });
 
         nextButton.setOnClickListener(v -> {
-            CreateJobSeekerProfileActivity activity = (CreateJobSeekerProfileActivity) getActivity();
-            activity.setFormPhoneNumber(phoneNumberField.getText().toString());
-            activity.goToStep(CreateJobSeekerSteps.IntroServicesFragment);
+            CreateUserProfileActivity activity = (CreateUserProfileActivity) getActivity();
+            //activity.setFormServicesOffered(getSelectedServices());
+            activity.finalizeProfile();
         });
     }
 

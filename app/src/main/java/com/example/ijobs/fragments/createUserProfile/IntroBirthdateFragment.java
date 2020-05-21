@@ -1,4 +1,4 @@
-package com.example.ijobs.fragments.createJobSeeker;
+package com.example.ijobs.fragments.createUserProfile;
 
 import android.app.DatePickerDialog;
 import android.os.Bundle;
@@ -15,7 +15,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import com.example.ijobs.CreateJobSeekerProfileActivity;
+import com.example.ijobs.CreateUserProfileActivity;
 import com.example.ijobs.R;
 
 import java.util.Date;
@@ -30,7 +30,7 @@ public class IntroBirthdateFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.create_job_seeker_profile_intro_birthdate, container, false);
+        View view = inflater.inflate(R.layout.create_user_profile_intro_birthdate, container, false);
 
         initializeComponents(view);
 
@@ -38,9 +38,9 @@ public class IntroBirthdateFragment extends Fragment {
     }
 
     private void initializeComponents(View view) {
-        dateInput = view.findViewById(R.id.create_job_seeker_profile_birthDateInput);
-        nameInput = view.findViewById(R.id.create_job_seeker_profile_nameInput);
-        nextButton = view.findViewById(R.id.create_job_seeker_profile_nextButton);
+        dateInput = view.findViewById(R.id.create_user_profile_birthDateInput);
+        nameInput = view.findViewById(R.id.create_user_profile_nameInput);
+        nextButton = view.findViewById(R.id.create_user_profile_nextButton);
 
         dateInput.setRawInputType(InputType.TYPE_NULL);
         dateInput.setFocusable(true);
@@ -65,12 +65,12 @@ public class IntroBirthdateFragment extends Fragment {
             public void afterTextChanged(Editable s) {
                 boolean isValidInput = validateInput();
                 nextButton.setEnabled(isValidInput);
-                ((CreateJobSeekerProfileActivity) getActivity()).setFormName(nameInput.getText().toString());
+                ((CreateUserProfileActivity) getActivity()).setFormName(nameInput.getText().toString());
             }
         });
 
         datePickerListener = (view1, year, month, dayOfMonth) -> {
-            ((CreateJobSeekerProfileActivity) getActivity()).setFormBirthdate(new Date(year, month, dayOfMonth));
+            ((CreateUserProfileActivity) getActivity()).setFormBirthdate(new Date(year, month, dayOfMonth));
             dateInput.setText((dayOfMonth < 10 ? "0" : "") + dayOfMonth + "/" + (month < 10 ? "0" : "") + month + "/" + year);
 
             boolean isValidInput = validateInput();
@@ -78,7 +78,7 @@ public class IntroBirthdateFragment extends Fragment {
             nextButton.setEnabled(isValidInput);
         };
 
-        nextButton.setOnClickListener(v -> ((CreateJobSeekerProfileActivity) getActivity()).goToStep(CreateJobSeekerSteps.IntroAddressFragment));
+        nextButton.setOnClickListener(v -> ((CreateUserProfileActivity) getActivity()).goToStep(CreateUserProfileSteps.IntroAddressFragment));
     }
 
     private boolean validateInput(){

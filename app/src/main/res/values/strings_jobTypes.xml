@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="jobTypes">
+        <item>ONE-TIME</item>
+        <item>PART-TIME</item>
+        <item>FULL-TIME</item>
+    </string-array>
+</resources>

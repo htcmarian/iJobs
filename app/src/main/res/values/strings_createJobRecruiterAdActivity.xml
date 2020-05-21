@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="create_job_recruiter_ad_title">Adauga anunt</string>
+    <string name="create_job_recruiter_ad_city_placeholderText">Oras</string>
+    <string name="create_job_recruiter_ad_jobType_partTimeText">Part-Time</string>
+    <string name="create_job_recruiter_ad_jobType_fullTimeText">Full-Time</string>
+    <string name="create_job_recruiter_ad_descriptionPlaceholderText">Descriere</string>
+    <string name="create_job_recruiter_ad_requiredSkillsPlaceholderText">Skill-uri</string>
+    <string name="create_job_recruiter_ad_serviceTitleText">Serviciu</string>
+    <string name="create_job_recruiter_ad_create_button_text">Adauga anunt</string>
+</resources>

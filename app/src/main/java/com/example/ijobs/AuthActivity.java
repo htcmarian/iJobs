@@ -8,12 +8,10 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.ijobs.services.AuthService;
 import com.example.ijobs.services.UserService;
-import com.google.android.gms.tasks.OnFailureListener;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -45,9 +43,9 @@ public class AuthActivity extends AppCompatActivity {
 
             authService
                     .login(email, password)
-                    .addOnSuccessListener(authResult -> NavigateToOfferListScreen())
+                    .addOnSuccessListener(authResult -> NavigateToMainScreen())
                     .addOnFailureListener(e -> {
-                        Log.e("EROARE", e.getMessage());
+                        errorTextMessage.setText("Username si/sau parola gresita");
                     });
         }
     }
@@ -66,7 +64,7 @@ public class AuthActivity extends AppCompatActivity {
 
                         userService
                                 .createUser(userId, email)
-                                .addOnSuccessListener(aVoid -> NavigateToOfferListScreen())
+                                .addOnSuccessListener(aVoid -> NavigateToCreateUserProfileScreen())
                                 .addOnFailureListener(e -> errorTextMessage.setText("A intervenit o eroare. Incercati din nou"));
                     })
                     .addOnFailureListener(e -> {
@@ -77,11 +75,17 @@ public class AuthActivity extends AppCompatActivity {
         }
     }
 
-    private void NavigateToOfferListScreen() {
+    private void NavigateToMainScreen() {
         Intent navigateToOfferListIntent = new Intent(AuthActivity.this, MainActivity.class);
         navigateToOfferListIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
 
         startActivity(navigateToOfferListIntent);
+    }
+
+    private void NavigateToCreateUserProfileScreen(){
+        Intent navigateToCreateUserProfileIntent = new Intent(AuthActivity.this, CreateUserProfileActivity.class);
+        navigateToCreateUserProfileIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(navigateToCreateUserProfileIntent);
     }
 
     private boolean ValidateUserInput() {

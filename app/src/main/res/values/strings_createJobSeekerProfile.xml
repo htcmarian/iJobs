@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="create_job_seeker_profile_servicesOffered_textViewTitle">Services offered</string>
+    <string name="create_job_seeker_profile_previousExperience_hintText">Experienta anterioara</string>
+    <string name="create_job_seeker_profile_previousJobsHintText">Job-uri anterioare</string>
+    <string name="create_job_seeker_profile_skills_hintText">Skill-uri</string>
+    <string name="create_job_seeker_profile_finalizeProfileButtonText">Salveaza</string>
+</resources>

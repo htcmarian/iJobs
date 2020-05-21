@@ -1,73 +1,60 @@
 package com.example.ijobs.viewmodels;
 
-import java.util.Date;
 import java.util.List;
 
 public class JobSeekerProfileViewModel {
-    private String name;
-    private Date birthDate;
-    private String address;
-    private String postalCode;
-    private String city;
-    private String phoneNumber;
-    private List<ServiceOfferListItemViewModel> servicesOffered;
+    private String userId;
+    private List<String> servicesOffered;
+    private String pastExperience;
+    private String pastJobs;
+    private String skills;
 
-    public JobSeekerProfileViewModel() {
+    public JobSeekerProfileViewModel(String userId, List<String> servicesOffered, String pastExperience, String pastJobs, String skills) {
+
+        this.userId = userId;
+        this.servicesOffered = servicesOffered;
+        this.pastExperience = pastExperience;
+        this.pastJobs = pastJobs;
+        this.skills = skills;
     }
 
-    public Date getBirthDate() {
-        return birthDate;
+    public String getUserId() {
+        return userId;
     }
 
-    public void setBirthDate(Date birthDate) {
-        this.birthDate = birthDate;
+    public void setUserId(String userId){
+        this.userId = userId;
     }
 
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public String getPostalCode() {
-        return postalCode;
-    }
-
-    public void setPostalCode(String postalCode) {
-        this.postalCode = postalCode;
-    }
-
-    public String getCity() {
-        return city;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
-    }
-
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
-
-    public List<ServiceOfferListItemViewModel> getServicesOffered() {
+    public List<String> getServicesOffered() {
         return servicesOffered;
     }
 
-    public void setServicesOffered(List<ServiceOfferListItemViewModel> servicesOffered) {
+    public void setServicesOffered(List<String> servicesOffered){
         this.servicesOffered = servicesOffered;
     }
 
-    public String getName() {
-        return name;
+    public String getPastExperience() {
+        return pastExperience;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setPastExperience(String pastExperience){
+        this.pastExperience = pastExperience;
+    }
+
+    public String getPastJobs() {
+        return pastJobs;
+    }
+
+    public void setPastJobs(String pastJobs){
+        this.pastJobs = pastJobs;
+    }
+
+    public String getSkills() {
+        return skills;
+    }
+
+    public void setSkills(String skills){
+        this.skills = skills;
     }
 }

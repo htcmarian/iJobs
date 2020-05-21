@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="servicesOffered">
+        <item>Cleaning</item>
+        <item>Maintenance</item>
+        <item>Gardening</item>
+        <item>Car wash</item>
+        <item>Car service</item>
+        <item>Construction</item>
+        <item>Tailor</item>
+    </string-array>
+</resources>

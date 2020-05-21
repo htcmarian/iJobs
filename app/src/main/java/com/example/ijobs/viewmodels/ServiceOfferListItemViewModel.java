@@ -4,9 +4,8 @@ public class ServiceOfferListItemViewModel {
     private String serviceName;
     private boolean isSelected;
 
-    public ServiceOfferListItemViewModel(String serviceName, boolean isSelected){
+    public ServiceOfferListItemViewModel(String serviceName){
         this.serviceName = serviceName;
-        this.isSelected = isSelected;
     }
 
 

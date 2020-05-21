@@ -1,41 +1,33 @@
 package com.example.ijobs;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.Editable;
-import android.view.View;
 import android.widget.Toast;
 
-import com.example.ijobs.fragments.createJobSeeker.CreateJobSeekerPagerAdapter;
-import com.example.ijobs.repositories.UserRepository;
+import com.example.ijobs.fragments.createUserProfile.CreateUserProfilePagerAdapter;
 import com.example.ijobs.services.UserService;
-import com.example.ijobs.viewmodels.JobSeekerProfileViewModel;
-import com.example.ijobs.viewmodels.ServiceOfferListItemViewModel;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
+import com.example.ijobs.viewmodels.UserProfileViewModel;
 import com.google.android.gms.tasks.Task;
 
 import java.util.Date;
-import java.util.List;
 
-public class CreateJobSeekerProfileActivity extends AppCompatActivity {
+public class CreateUserProfileActivity extends AppCompatActivity {
 
     private ViewPager contentPager;
     private PagerAdapter contentAdapter;
-    protected JobSeekerProfileViewModel form;
+    protected UserProfileViewModel form;
     private UserService userService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_create_job_seeker_profile);
+        setContentView(R.layout.activity_create_user_profile);
 
-        form = new JobSeekerProfileViewModel();
+        form = new UserProfileViewModel();
         userService = new UserService();
 
         initializeComponents();
@@ -50,7 +42,7 @@ public class CreateJobSeekerProfileActivity extends AppCompatActivity {
     }
 
     public void finalizeProfile() {
-        Task<Void> finalizeProfileResult = userService.updateJobSeekerCv(this.form);
+        Task<Void> finalizeProfileResult = userService.updateUserProfile(this.form);
 
         if (finalizeProfileResult == null) {
             Toast.makeText(getApplicationContext(), "A intervenit o eroare", Toast.LENGTH_LONG);
@@ -59,9 +51,9 @@ public class CreateJobSeekerProfileActivity extends AppCompatActivity {
 
         finalizeProfileResult
                 .addOnSuccessListener(aVoid -> {
-                    Intent goToJobOfferIntent = new Intent(this, JobOfferActivity.class);
-                    goToJobOfferIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                    startActivity(goToJobOfferIntent);
+                    Intent goToMainScreen = new Intent(this, MainActivity.class);
+                    goToMainScreen.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    startActivity(goToMainScreen);
                 })
                 .addOnFailureListener(e -> {
                     Toast.makeText(getApplicationContext(), "A intervenit o eroare", Toast.LENGTH_LONG);
@@ -71,7 +63,7 @@ public class CreateJobSeekerProfileActivity extends AppCompatActivity {
 
     private void initializeComponents() {
         contentPager = findViewById(R.id.createJobSeekerProfileViewPager);
-        contentAdapter = new CreateJobSeekerPagerAdapter(getSupportFragmentManager());
+        contentAdapter = new CreateUserProfilePagerAdapter(getSupportFragmentManager());
 
         contentPager.setAdapter(contentAdapter);
     }
@@ -84,10 +76,6 @@ public class CreateJobSeekerProfileActivity extends AppCompatActivity {
 
     public void setFormPhoneNumber(String phoneNumber) {
         form.setPhoneNumber(phoneNumber);
-    }
-
-    public void setFormServicesOffered(List<ServiceOfferListItemViewModel> selectedServices) {
-        form.setServicesOffered(selectedServices);
     }
 
     public void setFormName(String name) {

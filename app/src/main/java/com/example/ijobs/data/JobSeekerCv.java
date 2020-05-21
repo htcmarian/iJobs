@@ -1,77 +1,48 @@
 package com.example.ijobs.data;
 
-import java.util.Date;
 import java.util.List;
 
 public class JobSeekerCv {
-    private String name;
-    private Date birthDate;
-    private String address;
-    private String postalCode;
-    private String city;
-    private String phoneNumber;
+    private String userId;
+    private String pastExperience;
+    private String pastJobs;
     private List<String> servicesOffered;
+    private String skills;
 
     public JobSeekerCv(){
-
+        
     }
 
-    public JobSeekerCv(String name, Date birthDate, String address, String postalCode, String city, String phoneNumber, List<String> servicesOffered) {
-        this.name = name;
-        this.birthDate = birthDate;
-        this.address = address;
-        this.postalCode = postalCode;
-        this.city = city;
-        this.phoneNumber = phoneNumber;
+    public JobSeekerCv(String userId, String pastExperience, String pastJobs, List<String> servicesOffered, String skills) {
+        this.userId = userId;
+        this.pastExperience = pastExperience;
+        this.pastJobs = pastJobs;
         this.servicesOffered = servicesOffered;
+        this.skills = skills;
     }
 
-    public String getName() {
-        return name;
+    public String getUserId() {
+        return userId;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
-    public Date getBirthDate() {
-        return birthDate;
+    public String getPastExperience() {
+        return pastExperience;
     }
 
-    public void setBirthDate(Date birthDate) {
-        this.birthDate = birthDate;
+    public void setPastExperience(String pastExperience) {
+        this.pastExperience = pastExperience;
     }
 
-    public String getAddress() {
-        return address;
+    public String getPastJobs() {
+        return pastJobs;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public String getPostalCode() {
-        return postalCode;
-    }
-
-    public void setPostalCode(String postalCode) {
-        this.postalCode = postalCode;
-    }
-
-    public String getCity() {
-        return city;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
-    }
-
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
+    public void setPastJobs(String pastJobs) {
+        this.pastJobs = pastJobs;
     }
 
     public List<String> getServicesOffered() {
@@ -80,5 +51,13 @@ public class JobSeekerCv {
 
     public void setServicesOffered(List<String> servicesOffered) {
         this.servicesOffered = servicesOffered;
+    }
+
+    public String getSkills() {
+        return skills;
+    }
+
+    public void setSkills(String skills) {
+        this.skills = skills;
     }
 }

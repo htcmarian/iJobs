@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.jobRecruiter.CreateJobRecruiterAd">
+
+    <TextView
+        android:id="@+id/create_job_recruiter_ad_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/create_job_recruiter_ad_title"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/create_job_recruiter_ad_city_inputText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/create_job_recruiter_ad_city_inputText"
+        android:layout_width="333dp"
+        android:layout_height="47dp"
+        android:layout_marginTop="56dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:hint="@string/create_job_recruiter_ad_city_placeholderText"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.474"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/create_job_recruiter_ad_title" />
+
+    <Spinner
+        android:id="@+id/create_job_recruiter_ad_offered_service_input"
+        android:layout_width="332dp"
+        android:layout_height="46dp"
+        app:layout_constraintBottom_toTopOf="@+id/create_job_recruiter_ad_serviceOffered_errorLabel"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/create_job_recruiter_ad_city_inputText" />
+
+    <Spinner
+        android:id="@+id/create_job_recruiter_ad_jobType_input"
+        android:layout_width="331dp"
+        android:layout_height="51dp"
+        android:layout_marginTop="28dp"
+        app:layout_constraintBottom_toTopOf="@+id/create_job_recruiter_ad_description_inputText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/create_job_recruiter_ad_serviceOffered_errorLabel" />
+
+    <TextView
+        android:id="@+id/create_job_recruiter_ad_jobType_errorLabel"
+        android:layout_width="327dp"
+        android:layout_height="23dp"
+        android:text=""
+        android:textColor="@color/design_default_color_error"
+        app:layout_constraintBottom_toTopOf="@+id/create_job_recruiter_ad_description_inputText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/create_job_recruiter_ad_jobType_input" />
+
+    <EditText
+        android:id="@+id/create_job_recruiter_ad_description_inputText"
+        android:layout_width="336dp"
+        android:layout_height="97dp"
+        android:layout_marginTop="52dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:gravity="start|top"
+        android:hint="@string/create_job_recruiter_ad_descriptionPlaceholderText"
+        android:inputType="textMultiLine"
+        android:lines="3"
+        app:layout_constraintBottom_toTopOf="@+id/create_job_recruiter_ad_requiredSkills_input"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/create_job_recruiter_ad_jobType_input" />
+
+    <EditText
+        android:id="@+id/create_job_recruiter_ad_requiredSkills_input"
+        android:layout_width="338dp"
+        android:layout_height="115dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:gravity="start|top"
+        android:hint="@string/create_job_recruiter_ad_requiredSkillsPlaceholderText"
+        android:inputType="textMultiLine"
+        android:lines="3"
+        app:layout_constraintBottom_toTopOf="@+id/create_job_recruiter_saveAd_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/create_job_recruiter_ad_description_inputText" />
+
+    <Button
+        android:id="@+id/create_job_recruiter_saveAd_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="onCreateJobRecruiterAdButtonClick"
+        android:text="@string/create_job_recruiter_ad_create_button_text"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/create_job_recruiter_ad_requiredSkills_input" />
+
+    <TextView
+        android:id="@+id/create_job_recruiter_ad_serviceOffered_errorLabel"
+        android:layout_width="327dp"
+        android:layout_height="23dp"
+        android:layout_marginTop="16dp"
+        android:text=""
+        android:textColor="@color/design_default_color_error"
+        app:layout_constraintBottom_toTopOf="@+id/create_job_recruiter_ad_jobType_input"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/create_job_recruiter_ad_offered_service_input" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

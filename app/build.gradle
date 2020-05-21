@@ -20,7 +20,10 @@ android {
             res.srcDirs =
                     [
                             'src/main/res/layout',
+                            'src/main/res/layout/createUserProfile',
                             'src/main/res/layout/createJobSeekerProfile',
+                            'src/main/res/layout/jobRecruiter',
+                            'src/main/res/layout/jobSeeker',
                             'src/main/res'
                     ]
         }
@@ -53,4 +56,5 @@ dependencies {
     implementation 'com.google.firebase:firebase-firestore:21.4.3'
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
     implementation 'androidx.cardview:cardview:1.0.0'
+    implementation 'com.google.android.material:material:1.1.0'
 }

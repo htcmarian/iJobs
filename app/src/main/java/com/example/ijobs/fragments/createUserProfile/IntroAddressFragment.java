@@ -1,4 +1,4 @@
-package com.example.ijobs.fragments.createJobSeeker;
+package com.example.ijobs.fragments.createUserProfile;
 
 import android.os.Bundle;
 import android.text.Editable;
@@ -13,7 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import com.example.ijobs.CreateJobSeekerProfileActivity;
+import com.example.ijobs.CreateUserProfileActivity;
 import com.example.ijobs.R;
 
 public class IntroAddressFragment extends Fragment {
@@ -24,7 +24,7 @@ public class IntroAddressFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.create_job_seeker_profile_intro_address, container, false);
+        View view = inflater.inflate(R.layout.create_user_profile_intro_address, container, false);
 
         initializeComponents(view);
 
@@ -32,10 +32,10 @@ public class IntroAddressFragment extends Fragment {
     }
 
     private void initializeComponents(View view) {
-        addressField = view.findViewById(R.id.create_job_seeker_profile_addressLocationTextInput);
-        cityField = view.findViewById(R.id.create_job_seeker_profile_addressCityTextInput);
-        postalCodeField = view.findViewById(R.id.create_job_seeker_profile_addressPostCodeTextInput);
-        nextButton = view.findViewById(R.id.create_job_seeker_profile_nextButton);
+        addressField = view.findViewById(R.id.create_user_profile_addressLocationTextInput);
+        cityField = view.findViewById(R.id.create_user_profile_addressCityTextInput);
+        postalCodeField = view.findViewById(R.id.create_user_profile_addressPostCodeTextInput);
+        nextButton = view.findViewById(R.id.create_user_profile_nextButton);
 
         addressField.addTextChangedListener(onTextChanged());
         cityField.addTextChangedListener(onTextChanged());
@@ -43,11 +43,11 @@ public class IntroAddressFragment extends Fragment {
 
         nextButton.setOnClickListener(v -> {
 
-            CreateJobSeekerProfileActivity activity = ((CreateJobSeekerProfileActivity) getActivity());
+            CreateUserProfileActivity activity = ((CreateUserProfileActivity) getActivity());
 
             activity.setFormAddress(addressField.getText().toString(), cityField.getText().toString(), postalCodeField.getText().toString());
 
-            activity.goToStep(CreateJobSeekerSteps.IntroPhoneNumberFragment);
+            activity.goToStep(CreateUserProfileSteps.IntroPhoneNumberFragment);
         });
     }
 

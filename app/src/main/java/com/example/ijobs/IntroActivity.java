@@ -37,10 +37,10 @@ public class IntroActivity extends AppCompatActivity {
             startActivity(authActivityIntent);
         }
         else{
-            Intent offerListActivityIntent = new Intent(this, MainActivity.class);
-            offerListActivityIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            Intent mainActivityIntent = new Intent(this, MainActivity.class);
+            mainActivityIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
 
-            startActivity(offerListActivityIntent);
+            startActivity(mainActivityIntent);
         }
     }
 }

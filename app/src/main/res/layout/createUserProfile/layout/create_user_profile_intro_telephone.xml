@@ -6,26 +6,26 @@
     android:layout_height="match_parent">
 
     <EditText
-        android:id="@+id/create_job_seeker_profile_phoneNumberInput"
+        android:id="@+id/create_user_profile_phoneNumberInput"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="@string/create_job_seeker_profile_phoneNumberPlaceholder"
+        android:hint="@string/create_user_profile_phoneNumberPlaceholder"
         android:inputType="phone"
-        app:layout_constraintBottom_toTopOf="@+id/create_job_seeker_profile_nextButton"
+        app:layout_constraintBottom_toTopOf="@+id/create_user_profile_nextButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/create_job_seeker_profile_nextButton"
+        android:id="@+id/create_user_profile_nextButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/create_job_seeker_profile_nextButtonText"
+        android:text="@string/create_user_profile_completeButtonText"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/create_job_seeker_profile_phoneNumberInput" />
+        app:layout_constraintTop_toBottomOf="@+id/create_user_profile_phoneNumberInput" />
 </androidx.constraintlayout.widget.ConstraintLayout>
