@@ -1,6 +1,7 @@
 package com.example.ijobs.activities.jobSeeker.fragments;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,6 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import com.example.ijobs.R;
+import com.example.ijobs.activities.jobSeeker.JobSeekerJobDetailsActivity;
 import com.example.ijobs.viewmodels.JobPostViewModel;
 
 import java.util.ArrayList;
@@ -33,10 +35,16 @@ public class JobPostListAdapter extends ArrayAdapter<JobPostViewModel> {
         TextView jobTypeTextView = rowView.findViewById(R.id.job_seeker_list_item_jobTypeText);
         TextView jobLocationTextView = rowView.findViewById(R.id.job_seeker_list_item_jobLocationText);
 
-
         jobTitleTextView.setText(values.get(position).getJobDescription());
         jobTypeTextView.setText(values.get(position).getJobType());
         jobLocationTextView.setText(values.get(position).getCity());
+
+        rowView.setOnClickListener(v -> {
+            Intent goToJobSeekerListingScreen = new Intent(getContext(), JobSeekerJobDetailsActivity.class);
+            goToJobSeekerListingScreen.putExtra("jobId", values.get(position).getId());
+            goToJobSeekerListingScreen.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            context.startActivity(goToJobSeekerListingScreen);
+        });
 
         return rowView;
     }

@@ -10,6 +10,7 @@ public class JobPost {
     private String skillsRequired;
     private String createdBy;
     private Date createdDate = new Date();
+    private String id;
 
     public JobPost() {
 
@@ -69,5 +70,13 @@ public class JobPost {
 
     public String getCreatedBy(){
         return this.createdBy;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 }

@@ -11,7 +11,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activities.jobRecruiter.CreateJobRecruiterAdActivity"></activity>
+        <activity android:name=".activities.chat.ListMessagesActivity"></activity>
+        <activity android:name=".activities.chat.SendMessageActivity" />
+        <activity android:name=".activities.jobRecruiter.JobRecruiterSeekerDetailsActivity" />
+        <activity android:name=".activities.jobSeeker.JobSeekerJobDetailsActivity" />
+        <activity android:name=".activities.jobRecruiter.CreateJobRecruiterAdActivity" />
         <activity android:name=".activities.jobRecruiter.JobRecruiterListingScreen" />
         <activity android:name=".activities.jobSeeker.JobSeekerListingScreen" />
         <activity android:name=".activities.jobSeeker.CreateJobSeekerProfileActivity" />
@@ -25,6 +29,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/facebook_app_id" />
+
     </application>
 
 </manifest>

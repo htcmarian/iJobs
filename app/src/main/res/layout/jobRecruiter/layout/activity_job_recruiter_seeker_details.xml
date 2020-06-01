@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.jobRecruiter.JobRecruiterSeekerDetailsActivity">
+
+    <TextView
+        android:id="@+id/job_recruiter_seeker_profile_phoneNumberTextView"
+        android:layout_width="315dp"
+        android:layout_height="28dp"
+        app:layout_constraintBottom_toTopOf="@+id/job_recruiter_seeker_profile_pastJobsLabel"
+        app:layout_constraintEnd_toEndOf="@+id/job_recruiter_seeker_profile_pastJobsLabel"
+        app:layout_constraintTop_toBottomOf="@+id/job_recruiter_seeker_profile_locationTextView" />
+
+    <TextView
+        android:id="@+id/job_recruiter_seeker_profile_pastJobsLabel"
+        android:layout_width="356dp"
+        android:layout_height="29dp"
+        android:text="Job-uri anterioare"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/job_recruiter_seeker_profile_pastJobsTextView"
+        app:layout_constraintEnd_toEndOf="@+id/job_recruiter_seeker_profile_pastJobsTextView"
+        app:layout_constraintTop_toBottomOf="@+id/job_recruiter_seeker_profile_phoneNumberLabel" />
+
+    <TextView
+        android:id="@+id/job_recruiter_seeker_profile_pastExperienceLabel"
+        android:layout_width="358dp"
+        android:layout_height="32dp"
+        android:text="Experienta anterioara"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/job_recruiter_seeker_profile_pastExperienceTextView"
+        app:layout_constraintEnd_toEndOf="@+id/job_recruiter_seeker_profile_pastExperienceTextView"
+        app:layout_constraintTop_toBottomOf="@+id/job_recruiter_seeker_profile_pastJobsTextView" />
+
+    <TextView
+        android:id="@+id/job_recruiter_seeker_profile_pastExperienceTextView"
+        android:layout_width="359dp"
+        android:layout_height="64dp"
+        android:maxLines="4"
+        app:layout_constraintBottom_toTopOf="@+id/job_recruiter_seeker_profile_skillsLabel"
+        app:layout_constraintEnd_toEndOf="@+id/job_recruiter_seeker_profile_skillsLabel"
+        app:layout_constraintTop_toBottomOf="@+id/job_recruiter_seeker_profile_pastExperienceLabel" />
+
+    <TextView
+        android:id="@+id/job_recruiter_seeker_profile_skillsLabel"
+        android:layout_width="359dp"
+        android:layout_height="30dp"
+        android:text="Skill-uri"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/job_recruiter_seeker_profile_skillsTextView"
+        app:layout_constraintEnd_toEndOf="@+id/job_recruiter_seeker_profile_skillsTextView"
+        app:layout_constraintTop_toBottomOf="@+id/job_recruiter_seeker_profile_pastExperienceTextView"
+        tools:visibility="invisible" />
+
+    <TextView
+        android:id="@+id/job_recruiter_seeker_profile_skillsTextView"
+        android:layout_width="358dp"
+        android:layout_height="101dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.509"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/job_recruiter_seeker_profile_skillsLabel" />
+
+    <TextView
+        android:id="@+id/job_recruiter_seeker_profile_pastJobsTextView"
+        android:layout_width="357dp"
+        android:layout_height="61dp"
+        android:minLines="4"
+        app:layout_constraintBottom_toTopOf="@+id/job_recruiter_seeker_profile_pastExperienceLabel"
+        app:layout_constraintEnd_toEndOf="@+id/job_recruiter_seeker_profile_pastExperienceLabel"
+        app:layout_constraintTop_toBottomOf="@+id/job_recruiter_seeker_profile_pastJobsLabel" />
+
+    <TextView
+        android:id="@+id/job_recruiter_seeker_profile_nameTextView"
+        android:layout_width="357dp"
+        android:layout_height="40dp"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/job_recruiter_seeker_profile_locationLabel"
+        app:layout_constraintEnd_toEndOf="@+id/job_recruiter_seeker_profile_locationTextView"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/job_recruiter_seeker_profile_locationTextView"
+        android:layout_width="316dp"
+        android:layout_height="31dp"
+        app:layout_constraintBottom_toTopOf="@+id/job_recruiter_seeker_profile_phoneNumberTextView"
+        app:layout_constraintEnd_toEndOf="@+id/job_recruiter_seeker_profile_phoneNumberTextView"
+        app:layout_constraintTop_toBottomOf="@+id/job_recruiter_seeker_profile_nameTextView" />
+
+    <ImageView
+        android:id="@+id/job_recruiter_seeker_profile_locationLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/job_recruiter_seeker_profile_phoneNumberLabel"
+        app:layout_constraintStart_toStartOf="@+id/job_recruiter_seeker_profile_phoneNumberLabel"
+        app:layout_constraintTop_toBottomOf="@+id/job_recruiter_seeker_profile_nameTextView"
+        app:srcCompat="@android:drawable/ic_menu_mylocation"
+        tools:visibility="invisible" />
+
+    <ImageView
+        android:id="@+id/job_recruiter_seeker_profile_phoneNumberLabel"
+        android:layout_width="32dp"
+        android:layout_height="30dp"
+        android:background="#AFADAD"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/job_recruiter_seeker_profile_pastJobsLabel"
+        app:layout_constraintStart_toStartOf="@+id/job_recruiter_seeker_profile_pastJobsLabel"
+        app:layout_constraintTop_toBottomOf="@+id/job_recruiter_seeker_profile_locationLabel"
+        app:srcCompat="@android:drawable/stat_sys_speakerphone" />
+
+    <ProgressBar
+        android:id="@+id/job_recruiter_seeker_profile_loadingSpinner"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/job_recruiter_seeker_profile_pastJobsTextView"
+        app:layout_constraintEnd_toStartOf="@+id/job_recruiter_seeker_profile_pastJobsTextView"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/job_recruiter_seeker_profile_pastJobsTextView"
+        app:layout_constraintTop_toBottomOf="@+id/job_recruiter_seeker_profile_pastJobsTextView" />
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,6 +1,7 @@
 package com.example.ijobs.services;
 
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -17,5 +18,13 @@ public class AuthService {
 
     public Task<AuthResult> login(String email, String password) {
         return FirebaseAuth.getInstance().signInWithEmailAndPassword(email, password);
+    }
+
+    public void logout() {
+        FirebaseAuth.getInstance().signOut();
+    }
+
+    public Task<AuthResult> signInWithCredential(AuthCredential credential) {
+        return FirebaseAuth.getInstance().signInWithCredential(credential);
     }
 }

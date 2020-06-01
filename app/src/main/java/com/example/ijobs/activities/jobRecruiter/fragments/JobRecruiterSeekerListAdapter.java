@@ -2,6 +2,7 @@ package com.example.ijobs.activities.jobRecruiter.fragments;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +10,8 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import com.example.ijobs.R;
+import com.example.ijobs.activities.jobRecruiter.JobRecruiterSeekerDetailsActivity;
+import com.example.ijobs.activities.jobSeeker.JobSeekerJobDetailsActivity;
 import com.example.ijobs.viewmodels.jobRecruiter.JobRecruiterSeekerViewModel;
 
 import java.util.List;
@@ -41,6 +44,13 @@ public class JobRecruiterSeekerListAdapter extends ArrayAdapter<JobRecruiterSeek
         nameTextView.setText(name);
         locationTextView.setText(location);
         servicesOfferedTextView.setText(String.join(", ", servicesOffered));
+
+        rowView.setOnClickListener(v -> {
+            Intent jobRecruiterSeekerDetailsActivity = new Intent(getContext(), JobRecruiterSeekerDetailsActivity.class);
+            jobRecruiterSeekerDetailsActivity.putExtra("userId", values[position].getUserId());
+            jobRecruiterSeekerDetailsActivity.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            context.startActivity(jobRecruiterSeekerDetailsActivity);
+        });
 
         return rowView;
     }

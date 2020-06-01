@@ -2,18 +2,33 @@ package com.example.ijobs;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.ijobs.data.User;
 import com.example.ijobs.services.AuthService;
 import com.example.ijobs.services.UserService;
+import com.example.ijobs.viewmodels.UserProfileViewModel;
+import com.facebook.CallbackManager;
+import com.facebook.FacebookCallback;
+import com.facebook.FacebookException;
+import com.facebook.FacebookSdk;
+import com.facebook.appevents.AppEventsLogger;
+import com.facebook.login.LoginManager;
+import com.facebook.login.LoginResult;
+import com.facebook.login.widget.LoginButton;
+import com.google.firebase.auth.AuthCredential;
+import com.google.firebase.auth.FacebookAuthProvider;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseUser;
+
+import java.util.Arrays;
+import java.util.Map;
 
 public class AuthActivity extends AppCompatActivity {
 
@@ -22,6 +37,8 @@ public class AuthActivity extends AppCompatActivity {
 
     private AuthService authService;
     private UserService userService;
+    private LoginButton loginButton;
+    private CallbackManager callbackManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +49,15 @@ public class AuthActivity extends AppCompatActivity {
 
         authService = new AuthService();
         userService = new UserService();
+
+        FacebookSdk.sdkInitialize(AuthActivity.this);
+        //AppEventsLogger.activateApp(this);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        callbackManager.onActivityResult(requestCode, resultCode, data);
+        super.onActivityResult(requestCode, resultCode, data);
     }
 
     public void onLoginButtonClick(View view) {
@@ -62,10 +88,7 @@ public class AuthActivity extends AppCompatActivity {
                         FirebaseUser user = authService.getUser();
                         String userId = user.getUid();
 
-                        userService
-                                .createUser(userId, email)
-                                .addOnSuccessListener(aVoid -> NavigateToCreateUserProfileScreen())
-                                .addOnFailureListener(e -> errorTextMessage.setText("A intervenit o eroare. Incercati din nou"));
+                        saveUserToDatabase(email, userId);
                     })
                     .addOnFailureListener(e -> {
                         if (e instanceof FirebaseAuthUserCollisionException) {
@@ -75,6 +98,13 @@ public class AuthActivity extends AppCompatActivity {
         }
     }
 
+    private void saveUserToDatabase(String email, String userId) {
+        userService
+                .createUser(userId, email)
+                .addOnSuccessListener(aVoid -> NavigateToCreateUserProfileScreen())
+                .addOnFailureListener(e -> errorTextMessage.setText("A intervenit o eroare. Incercati din nou"));
+    }
+
     private void NavigateToMainScreen() {
         Intent navigateToOfferListIntent = new Intent(AuthActivity.this, MainActivity.class);
         navigateToOfferListIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
@@ -82,7 +112,7 @@ public class AuthActivity extends AppCompatActivity {
         startActivity(navigateToOfferListIntent);
     }
 
-    private void NavigateToCreateUserProfileScreen(){
+    private void NavigateToCreateUserProfileScreen() {
         Intent navigateToCreateUserProfileIntent = new Intent(AuthActivity.this, CreateUserProfileActivity.class);
         navigateToCreateUserProfileIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(navigateToCreateUserProfileIntent);
@@ -116,6 +146,52 @@ public class AuthActivity extends AppCompatActivity {
         emailField = findViewById(R.id.authActivity_emailField);
         passwordField = findViewById(R.id.authActivity_passwordField);
         errorTextMessage = findViewById(R.id.authActivity_errorText);
+        loginButton = findViewById(R.id.login_button);
+
+        callbackManager = CallbackManager.Factory.create();
+        loginButton.setReadPermissions(Arrays.asList("email"));
     }
+
+    public void onLoginWithFbClicked(View view) {
+        LoginManager.getInstance().registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
+            @Override
+            public void onSuccess(LoginResult loginResult) {
+                AuthCredential credential = FacebookAuthProvider.getCredential(loginResult.getAccessToken().getToken());
+                authService.signInWithCredential(credential).addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+
+                        userService.getCurrentUser().addOnCompleteListener(task1 -> {
+                            if (task1.isSuccessful()) {
+                                User user = task1.getResult().toObject(User.class);
+
+                                if (user == null) {
+                                    saveUserToDatabase(task.getResult().getUser().getEmail(), task.getResult().getUser().getUid());
+                                    NavigateToCreateUserProfileScreen();
+                                    return;
+                                }
+
+                                if (user.getUserProfile() == null) {
+                                    NavigateToCreateUserProfileScreen();
+                                } else {
+                                    NavigateToMainScreen();
+                                }
+                            }
+                        });
+                    }
+                });
+            }
+
+            @Override
+            public void onCancel() {
+
+            }
+
+            @Override
+            public void onError(FacebookException error) {
+
+            }
+        });
+    }
+
 
 }

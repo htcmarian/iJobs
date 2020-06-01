@@ -1,14 +1,12 @@
 package com.example.ijobs.repositories;
 
-import androidx.annotation.NonNull;
-
 import com.example.ijobs.data.JobSeekerCv;
 import com.example.ijobs.data.User;
 import com.example.ijobs.data.UserProfile;
-import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -42,5 +40,12 @@ public class UserRepository {
         return db.collection("users")
                 .document(jobSeekerCv.getUserId())
                 .update(updateSchema);
+    }
+
+    public Task<QuerySnapshot> getAllUsers() {
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+        return db.collection("users").get();
+
     }
 }

@@ -8,6 +8,7 @@ import com.example.ijobs.viewmodels.UserProfileViewModel;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 public class UserService {
 
@@ -45,5 +46,13 @@ public class UserService {
 
     public Task<Void> updateJobSeekerProfile(JobSeekerProfileViewModel jobSeekerProfileViewModel) {
         return userRepository.updateJobSeekerProfile(new JobSeekerCv(jobSeekerProfileViewModel.getUserId(), jobSeekerProfileViewModel.getPastExperience(), jobSeekerProfileViewModel.getPastJobs(), jobSeekerProfileViewModel.getServicesOffered(), jobSeekerProfileViewModel.getSkills()));
+    }
+
+    public Task<DocumentSnapshot> getUserDetails(String createdBy) {
+        return userRepository.getUser(createdBy);
+    }
+
+    public Task<QuerySnapshot> getAllUsers() {
+        return userRepository.getAllUsers();
     }
 }

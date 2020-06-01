@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.chat.SendMessageActivity">
+
+    <RelativeLayout
+        android:id="@+id/send_message_appbar"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        app:layout_constraintBottom_toTopOf="@+id/send_message_recyclerView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/send_message_userToChatTextView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textSize="18dp">
+
+        </TextView>
+    </RelativeLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/send_message_recyclerView"
+        android:layout_width="397dp"
+        android:layout_height="361dp"
+        android:layout_above="@id/send_message_appbar"
+        android:layout_below="@+id/send_message_inputContainer"
+        android:paddingVertical="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/send_message_inputContainer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <RelativeLayout
+        android:id="@+id/send_message_inputContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="#fff"
+        android:padding="5dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:layout_editor_absoluteX="-37dp">
+
+        <EditText
+            android:id="@+id/send_message_inputTextField"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@+id/send_message_sendTextButton"
+            android:background="@android:color/transparent"
+            android:hint="Type a message...">
+
+        </EditText>
+
+        <ImageView
+            android:id="@+id/send_message_sendTextButton"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            app:srcCompat="@android:drawable/ic_menu_send"
+            tools:srcCompat="@android:drawable/ic_menu_send">
+
+        </ImageView>
+    </RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

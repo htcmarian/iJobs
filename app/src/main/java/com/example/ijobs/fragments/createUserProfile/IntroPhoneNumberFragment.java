@@ -55,7 +55,7 @@ public class IntroPhoneNumberFragment extends Fragment {
 
         nextButton.setOnClickListener(v -> {
             CreateUserProfileActivity activity = (CreateUserProfileActivity) getActivity();
-            //activity.setFormServicesOffered(getSelectedServices());
+            activity.setFormPhoneNumber(phoneNumberField.getText().toString());
             activity.finalizeProfile();
         });
     }

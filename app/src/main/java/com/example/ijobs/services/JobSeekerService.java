@@ -27,4 +27,10 @@ public class JobSeekerService {
         return filteredQuery.get();
 
     }
+
+    public Task<QuerySnapshot> getJobDetails(String id) {
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+        return db.collection("jobPosts").whereEqualTo("id", id).get();
+    }
 }
