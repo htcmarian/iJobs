@@ -15,13 +15,18 @@ import com.example.ijobs.activities.jobSeeker.JobSeekerListingScreen;
 import com.example.ijobs.data.User;
 import com.example.ijobs.services.AuthService;
 import com.example.ijobs.services.UserService;
+import com.google.android.material.bottomappbar.BottomAppBar;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class MainActivity extends AppCompatActivity {
 
     private UserService userService;
-    private ImageView logoutButton;
     private AuthService authService;
-    private ImageView conversationButton;
+    private FloatingActionButton conversationButton;
+    private BottomAppBar materialToolbar;
+    private ImageView jobSeekerButton;
+    private ImageView jobRecruiterButton;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,10 +40,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initializeComponents() {
-        logoutButton = findViewById(R.id.mainActivity_logoutButton);
-        conversationButton = findViewById(R.id.mainActivity_conversationButton);
+        materialToolbar = findViewById(R.id.mainActivity_BottomBar);
+        conversationButton = findViewById(R.id.mainActivity_chatConversationButton);
+        jobSeekerButton = findViewById(R.id.mainActivity_jobSeekerButton);
+        jobRecruiterButton = findViewById(R.id.mainActivity_jobRecruiterButton);
 
-        logoutButton.setOnClickListener(v -> {
+        materialToolbar.setNavigationOnClickListener(v -> {
             authService.logout();
             navigateToLoginScreen();
         });
@@ -46,6 +53,9 @@ public class MainActivity extends AppCompatActivity {
         conversationButton.setOnClickListener(v -> {
             navigateToConversationScreen();
         });
+
+        jobSeekerButton.setOnClickListener(this::onJobSeekerButtonClick);
+        jobRecruiterButton.setOnClickListener(this::onJobRecruiterButtonClick);
     }
 
     private void navigateToLoginScreen() {
@@ -54,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
         startActivity(authActivity);
     }
 
-    private void navigateToConversationScreen(){
+    private void navigateToConversationScreen() {
         Intent listMessagesActivity = new Intent(MainActivity.this, ListMessagesActivity.class);
         listMessagesActivity.putExtra("currentUserId", authService.getUser().getUid());
         startActivity(listMessagesActivity);
@@ -65,11 +75,10 @@ public class MainActivity extends AppCompatActivity {
                 .getCurrentUser()
                 .addOnSuccessListener(documentSnapshot -> {
                     User user = documentSnapshot.toObject(User.class);
-                    if(user.getJobSeekerCv() == null){
+                    if (user.getJobSeekerCv() == null) {
                         Intent createJobSeekerProfileActivity = new Intent(this, CreateJobSeekerProfileActivity.class);
                         startActivity(createJobSeekerProfileActivity);
-                    }
-                    else{
+                    } else {
                         Intent jobSeekerListingScreenActivity = new Intent(this, JobSeekerListingScreen.class);
                         startActivity(jobSeekerListingScreenActivity);
                     }
