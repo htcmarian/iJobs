@@ -16,9 +16,11 @@ import com.example.ijobs.R;
 import com.example.ijobs.activities.chat.SendMessageActivity;
 import com.example.ijobs.data.User;
 import com.example.ijobs.services.AuthService;
+import com.example.ijobs.services.ImageProvider;
 import com.example.ijobs.services.JobSeekerService;
 import com.example.ijobs.services.UserService;
 import com.example.ijobs.viewmodels.JobPostViewModel;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.List;
 
@@ -35,11 +37,12 @@ public class JobSeekerJobDetailsActivity extends AppCompatActivity {
     private TextView skillsRequiredTextView;
     private TextView addedByTextView;
     private ProgressBar loadingSpinner;
-    private Button contactButton;
     private ImageView locationIcon;
     private ImageView jobTypeIcon;
     private ImageView serviceRequiredIcon;
     private String addedByUserId;
+    private FloatingActionButton contactButton;
+
     private AuthService authService;
 
     @Override
@@ -56,13 +59,6 @@ public class JobSeekerJobDetailsActivity extends AppCompatActivity {
         loadJobDetails();
     }
 
-    public void onContactButtonClick(View view){
-        Intent goToJobSeekerListingScreen = new Intent(this, SendMessageActivity.class);
-        goToJobSeekerListingScreen.putExtra("userToChatWithId", addedByUserId);
-        goToJobSeekerListingScreen.putExtra("userId", authService.getUser().getUid());
-        startActivity(goToJobSeekerListingScreen);
-    }
-
     private void initializeComponents() {
         jobDescriptionTextView = findViewById(R.id.job_seeker_job_details_jobDescription);
         cityTextView = findViewById(R.id.job_seeker_job_details_city);
@@ -75,6 +71,13 @@ public class JobSeekerJobDetailsActivity extends AppCompatActivity {
         locationIcon = findViewById(R.id.job_seeker_job_details_locationIcon);
         jobTypeIcon = findViewById(R.id.job_seeker_job_details_jobTypeIcon);
         serviceRequiredIcon = findViewById(R.id.job_seeker_job_details_serviceRequiredIcon);
+
+        contactButton.setOnClickListener(v->{
+            Intent goToJobSeekerListingScreen = new Intent(this, SendMessageActivity.class);
+            goToJobSeekerListingScreen.putExtra("userToChatWithId", addedByUserId);
+            goToJobSeekerListingScreen.putExtra("userId", authService.getUser().getUid());
+            startActivity(goToJobSeekerListingScreen);
+        });
     }
 
     private void loadJobDetails() {
@@ -88,12 +91,16 @@ public class JobSeekerJobDetailsActivity extends AppCompatActivity {
             }).addOnSuccessListener(command -> {
                 data = command.toObjects(JobPostViewModel.class).get(0);
 
+                String jobTypeImageName = data.getJobType().toLowerCase().replace("-","_");
+
                 jobDescriptionTextView.setText(data.getJobDescription());
                 cityTextView.setText(data.getCity());
                 jobTypeTextView.setText(data.getJobType());
                 serviceRequiredTextView.setText(data.getServiceRequired());
                 skillsRequiredTextView.setText(data.getSkillsRequired());
                 addedByUserId = data.getCreatedBy();
+                jobTypeIcon.setImageURI(ImageProvider.getImageUri(jobTypeImageName));
+                serviceRequiredIcon.setImageURI(ImageProvider.getImageUri(data.getServiceRequiredImageThumbnail()));
 
                 userService
                         .getUserDetails(data.getCreatedBy())
@@ -103,7 +110,7 @@ public class JobSeekerJobDetailsActivity extends AppCompatActivity {
                             addedByTextView.setText("Adaugat de : " + user.getUserProfile().getName());
 
                             loadingSpinner.setVisibility(View.GONE);
-                            contactButton.setVisibility(View.VISIBLE);
+                            contactButton.setClickable(true);
                             jobTypeIcon.setVisibility(View.VISIBLE);
                             locationIcon.setVisibility(View.VISIBLE);
                             serviceRequiredIcon.setVisibility(View.VISIBLE);

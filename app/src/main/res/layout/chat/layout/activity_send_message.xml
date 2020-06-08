@@ -64,6 +64,7 @@
             android:layout_height="40dp"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
+            android:background="@color/secondary"
             app:srcCompat="@android:drawable/ic_menu_send"
             tools:srcCompat="@android:drawable/ic_menu_send">
 

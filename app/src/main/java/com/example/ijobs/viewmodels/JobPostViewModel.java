@@ -87,4 +87,12 @@ public class JobPostViewModel {
     public void setCreatedDate(Date createdDate) {
         this.createdDate = createdDate;
     }
+
+    public String getServiceRequiredImageThumbnail() {
+        if (getServiceRequired().contains(",")) {
+            return "multiple";
+        }
+
+        return getServiceRequired().toLowerCase().replace(" ", "_");
+    }
 }

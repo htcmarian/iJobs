@@ -17,6 +17,7 @@
             android:layout_height="wrap_content"
             android:layout_marginRight="5dp"
             android:layout_alignParentRight="true"
+            android:textColor="@color/secondary"
             android:background="@drawable/chat_send_shape"
             android:padding="8dp"></TextView>
     </RelativeLayout>

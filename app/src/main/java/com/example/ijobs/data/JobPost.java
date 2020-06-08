@@ -68,7 +68,7 @@ public class JobPost {
         this.createdBy = createdByUserId;
     }
 
-    public String getCreatedBy(){
+    public String getCreatedBy() {
         return this.createdBy;
     }
 

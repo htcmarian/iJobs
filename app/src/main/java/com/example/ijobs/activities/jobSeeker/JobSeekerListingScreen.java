@@ -1,5 +1,6 @@
 package com.example.ijobs.activities.jobSeeker;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -11,9 +12,13 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.ijobs.R;
-import com.example.ijobs.activities.jobSeeker.fragments.JobPostListAdapter;
+import com.example.ijobs.activities.jobSeeker.fragments.JobSeekerListAdapter;
 import com.example.ijobs.services.JobSeekerService;
 import com.example.ijobs.viewmodels.JobPostViewModel;
+import com.yuyakaido.android.cardstackview.CardStackLayoutManager;
+import com.yuyakaido.android.cardstackview.CardStackListener;
+import com.yuyakaido.android.cardstackview.CardStackView;
+import com.yuyakaido.android.cardstackview.Direction;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,12 +26,14 @@ import java.util.List;
 public class JobSeekerListingScreen extends AppCompatActivity {
     private ListView jobPostsList;
     private JobSeekerService jobSeekerService;
-    private JobPostListAdapter adapter;
+    private JobSeekerListAdapter adapter;
     private Spinner jobTypeSpinnerInput;
     private Spinner jobServiceOfferSpinnerInput;
     private String filterJobType;
     private String filterServiceType;
     private ArrayList<JobPostViewModel> jobPosts;
+    private CardStackView jobCardStackView;
+    private int currentJobIndex = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,15 +66,58 @@ public class JobSeekerListingScreen extends AppCompatActivity {
     }
 
     private void initializeComponents() {
-        jobPostsList = findViewById(R.id.job_seeker_listing_screen_job_list);
+//        jobPostsList = findViewById(R.id.job_seeker_listing_screen_job_list);
         jobTypeSpinnerInput = findViewById(R.id.job_seeker_listing_screen_jobTypeFilter);
         jobServiceOfferSpinnerInput = findViewById(R.id.job_seeker_listing_screen_jobServiceRequiredFilter);
+        jobCardStackView = findViewById(R.id.job_seeker_listing_screen_jobCardStackView);
+
+        adapter = new JobSeekerListAdapter(getBaseContext(), jobPosts);
+        jobCardStackView.setAdapter(adapter);
+
+        jobCardStackView.setLayoutManager(new CardStackLayoutManager(this, new CardStackListener() {
+            @Override
+            public void onCardDragging(Direction direction, float ratio) {
+
+            }
+
+            @Override
+            public void onCardSwiped(Direction direction) {
+
+                if(direction == Direction.Right){
+                    Intent goToJobSeekerListingScreen = new Intent(getApplicationContext(), JobSeekerJobDetailsActivity.class);
+                    goToJobSeekerListingScreen.putExtra("jobId", jobPosts.get(currentJobIndex).getId());
+                    goToJobSeekerListingScreen.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    startActivity(goToJobSeekerListingScreen);
+                }
+
+                if(Direction.HORIZONTAL.contains(direction)){
+                    currentJobIndex++;
+                }
+            }
+
+            @Override
+            public void onCardRewound() {
+
+            }
+
+            @Override
+            public void onCardCanceled() {
+
+            }
+
+            @Override
+            public void onCardAppeared(View view, int position) {
+
+            }
+
+            @Override
+            public void onCardDisappeared(View view, int position) {
+
+            }
+        }));
 
         initializeJobTypeComponent();
         initializeServiceTypeComponent();
-
-        adapter = new JobPostListAdapter(getBaseContext(), R.id.job_seeker_list_item_jobTitleText, jobPosts);
-        jobPostsList.setAdapter(adapter);
     }
 
     private void initializeJobTypeComponent() {

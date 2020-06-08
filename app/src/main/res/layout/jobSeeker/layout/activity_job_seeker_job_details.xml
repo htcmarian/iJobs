@@ -11,6 +11,8 @@
         android:layout_width="361dp"
         android:layout_height="86dp"
         android:maxLines="2"
+        android:textAlignment="center"
+        android:textColor="@color/secondary"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/job_seeker_job_details_city"
@@ -22,8 +24,10 @@
     <TextView
         android:id="@+id/job_seeker_job_details_city"
         android:layout_width="292dp"
-        android:layout_height="40dp"
+        android:layout_height="wrap_content"
         android:textAlignment="gravity"
+        android:textColor="@color/secondary"
+        android:textSize="14sp"
         app:layout_constraintBottom_toTopOf="@+id/job_seeker_job_details_jobType"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -33,7 +37,9 @@
     <TextView
         android:id="@+id/job_seeker_job_details_jobType"
         android:layout_width="288dp"
-        android:layout_height="42dp"
+        android:layout_height="wrap_content"
+        android:textColor="@color/secondary"
+        android:textSize="14sp"
         app:layout_constraintBottom_toTopOf="@+id/job_seeker_job_details_serviceRequired"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -43,7 +49,9 @@
     <TextView
         android:id="@+id/job_seeker_job_details_serviceRequired"
         android:layout_width="290dp"
-        android:layout_height="45dp"
+        android:layout_height="wrap_content"
+        android:textColor="@color/secondary"
+        android:textSize="14sp"
         app:layout_constraintBottom_toTopOf="@+id/job_seeker_job_details_skillsRequired"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -54,39 +62,35 @@
         android:id="@+id/job_seeker_job_details_skillsRequired"
         android:layout_width="364dp"
         android:layout_height="119dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="27dp"
+        android:layout_marginBottom="148dp"
         android:maxLines="4"
-        app:layout_constraintBottom_toTopOf="@+id/job_seeker_job_details_addedBy"
-        app:layout_constraintStart_toStartOf="@+id/job_seeker_job_details_addedBy"
-        app:layout_constraintTop_toBottomOf="@+id/job_seeker_job_details_serviceRequired" />
+        android:textAlignment="center"
+        android:textColor="@color/secondary"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/job_seeker_job_details_addedBy"
         android:layout_width="216dp"
         android:layout_height="48dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/job_seeker_job_details_contactButton"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/job_seeker_job_details_skillsRequired" />
-
-    <Button
-        android:id="@+id/job_seeker_job_details_contactButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="onContactButtonClick"
-        android:text="@string/job_seeker_job_details_contactButtonText"
-        android:visibility="invisible"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="175dp"
+        android:layout_marginBottom="100dp"
+        android:textColor="@color/secondary"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/job_seeker_job_details_addedBy"
-        app:layout_constraintTop_toBottomOf="@+id/job_seeker_job_details_skillsRequired" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <ProgressBar
         android:id="@+id/job_seeker_job_details_loadingSpinner"
         style="?android:attr/progressBarStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:indeterminateTint="@color/secondary"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -103,12 +107,13 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/job_seeker_job_details_jobDescription"
-        app:srcCompat="@android:drawable/ic_menu_mylocation" />
+        app:srcCompat="@drawable/ic_location_on_secondary_24dp" />
 
     <ImageView
         android:id="@+id/job_seeker_job_details_jobTypeIcon"
         android:layout_width="41dp"
         android:layout_height="43dp"
+        android:backgroundTintMode="screen"
         android:visibility="invisible"
         app:layout_constraintBottom_toTopOf="@+id/job_seeker_job_details_serviceRequired"
         app:layout_constraintEnd_toStartOf="@+id/job_seeker_job_details_jobType"
@@ -116,7 +121,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/job_seeker_job_details_locationIcon"
         app:layout_constraintVertical_bias="0.484"
-        app:srcCompat="@android:drawable/ic_menu_sort_by_size" />
+        app:srcCompat="@drawable/one_time" />
 
     <ImageView
         android:id="@+id/job_seeker_job_details_serviceRequiredIcon"
@@ -129,4 +134,29 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/job_seeker_job_details_jobTypeIcon"
         app:srcCompat="@android:drawable/ic_input_get" />
+
+        <androidx.coordinatorlayout.widget.CoordinatorLayout
+            android:id="@+id/coordinatorLayout4"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.bottomappbar.BottomAppBar
+                android:id="@+id/job_seeker_job_details_BottomBar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:backgroundTint="@color/colorPrimaryDark" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/job_seeker_job_details_contactButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/secondary"
+                app:layout_anchor="@id/job_seeker_job_details_BottomBar"
+                app:srcCompat="@drawable/ic_chat_white" />
+        </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
