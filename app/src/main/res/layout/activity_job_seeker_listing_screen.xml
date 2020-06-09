@@ -34,29 +34,4 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout3"></com.yuyakaido.android.cardstackview.CardStackView>
 
-    <!--    <ScrollView-->
-    <!--        android:id="@+id/job_seeker_listing_screen_job_filters"-->
-    <!--        android:layout_width="407dp"-->
-    <!--        android:layout_height="55dp"-->
-    <!--        app:layout_constraintBottom_toTopOf="@+id/job_seeker_listing_screen_job_list"-->
-    <!--        app:layout_constraintEnd_toEndOf="parent"-->
-    <!--        app:layout_constraintHorizontal_bias="0.5"-->
-    <!--        app:layout_constraintStart_toStartOf="parent"-->
-    <!--        app:layout_constraintTop_toTopOf="parent">-->
-
-    <!--       -->
-    <!--    </ScrollView>-->
-
-    <!--    <ListView-->
-    <!--        android:id="@+id/job_seeker_listing_screen_job_list"-->
-    <!--        android:layout_width="408dp"-->
-    <!--        android:layout_height="632dp"-->
-    <!--        app:layout_constraintBottom_toBottomOf="parent"-->
-    <!--        app:layout_constraintEnd_toEndOf="parent"-->
-    <!--        app:layout_constraintHorizontal_bias="0.5"-->
-    <!--        app:layout_constraintStart_toStartOf="parent"-->
-    <!--        app:layout_constraintTop_toBottomOf="@+id/job_seeker_listing_screen_job_filters">-->
-
-    <!--    </ListView>-->
-
 </androidx.constraintlayout.widget.ConstraintLayout>

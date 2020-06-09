@@ -81,6 +81,7 @@ public class JobRecruiterSeekerDetailsActivity extends AppCompatActivity {
                 skillsLabel.setVisibility(View.VISIBLE);
                 skillsTextView.setText(data.getJobSeekerCv().getSkills());
 
+                nameTextView.setVisibility(View.VISIBLE);
                 nameTextView.setText(data.getUserProfile().getName());
 
                 locationLabel.setVisibility(View.VISIBLE);

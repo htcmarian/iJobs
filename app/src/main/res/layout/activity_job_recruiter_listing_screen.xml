@@ -6,21 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".activities.jobRecruiter.JobRecruiterListingScreen">
 
-    <Button
-        android:id="@+id/job_recruiter_listing_screen_add_jobPostButton"
-        style="@style/Widget.AppCompat.Button.Small"
-        android:layout_width="56dp"
-        android:layout_height="54dp"
-        android:layout_marginBottom="50dp"
-        android:text="@string/job_recruiter_listing_screen_addJobPost_buttonText"
-        android:onClick="onCreateAdButtonClick"
-        app:layout_constraintBottom_toTopOf="@+id/job_recruiter_listing_screen_person_filterScrollView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
-
     <ScrollView
         android:id="@+id/job_recruiter_listing_screen_person_filterScrollView"
         android:layout_width="409dp"
@@ -46,5 +31,31 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/job_recruiter_listing_screen_person_filterScrollView"
         app:layout_constraintVertical_bias="1.0" />
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/coordinatorLayout4"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.bottomappbar.BottomAppBar
+            android:id="@+id/job_recruiter_listing_screen_person_BottomBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:backgroundTint="@color/colorPrimaryDark" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/job_recruiter_listing_screen_add_jobPostButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/secondary"
+            android:onClick="onCreateAdButtonClick"
+            app:layout_anchor="@id/job_recruiter_listing_screen_person_BottomBar"
+            app:srcCompat="@drawable/ic_playlist_add_black_24dp" />
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
