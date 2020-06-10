@@ -25,10 +25,10 @@
         <activity android:name=".activities.jobRecruiter.JobRecruiterListingScreen" />
         <activity android:name=".activities.jobSeeker.JobSeekerListingScreen" />
         <activity android:name=".activities.jobSeeker.CreateJobSeekerProfileActivity" />
-        <activity android:name=".IntroActivity" />
+        <activity android:name=".CreateUserProfileActivity" />
         <activity android:name=".MainActivity" />
         <activity android:name=".AuthActivity" />
-        <activity android:name=".CreateUserProfileActivity">
+        <activity android:name=".IntroActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
