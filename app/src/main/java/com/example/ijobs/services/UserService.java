@@ -1,5 +1,7 @@
 package com.example.ijobs.services;
 
+import android.graphics.Bitmap;
+
 import com.example.ijobs.data.JobSeekerCv;
 import com.example.ijobs.data.UserProfile;
 import com.example.ijobs.repositories.UserRepository;
@@ -9,6 +11,11 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
+
+import java.io.ByteArrayOutputStream;
 
 public class UserService {
 
@@ -54,5 +61,17 @@ public class UserService {
 
     public Task<QuerySnapshot> getAllUsers() {
         return userRepository.getAllUsers();
+    }
+
+    public UploadTask uploadUserProfilePicture(String userId, Bitmap userProfilePicture) {
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        userProfilePicture.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+        byte[] data = baos.toByteArray();
+
+        FirebaseStorage storage = FirebaseStorage.getInstance();
+
+        StorageReference storageReference = storage.getReference("profilePictures/" + userId + ".jpeg");
+
+        return storageReference.putBytes(data);
     }
 }

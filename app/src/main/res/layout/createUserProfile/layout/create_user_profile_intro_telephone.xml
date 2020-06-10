@@ -5,14 +5,29 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <ProgressBar
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:max="125"
+        android:minHeight="50dp"
+        android:progress="75"
+        android:progressTint="@color/secondary"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"></ProgressBar>
+
     <EditText
         android:id="@+id/create_user_profile_phoneNumberInput"
-        android:layout_width="wrap_content"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="323dp"
+        android:backgroundTint="@color/secondary"
+        android:textColor="@color/secondary"
         android:ems="10"
         android:hint="@string/create_user_profile_phoneNumberPlaceholder"
         android:inputType="phone"
-        app:layout_constraintBottom_toTopOf="@+id/create_user_profile_nextButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -20,12 +35,14 @@
 
     <Button
         android:id="@+id/create_user_profile_nextButton"
+        android:backgroundTint="@color/secondary"
+        android:textColor="@android:color/black"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/create_user_profile_completeButtonText"
+        android:text="Mergi mai departe"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/create_user_profile_phoneNumberInput" />
 </androidx.constraintlayout.widget.ConstraintLayout>

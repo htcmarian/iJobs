@@ -56,7 +56,8 @@ public class IntroPhoneNumberFragment extends Fragment {
         nextButton.setOnClickListener(v -> {
             CreateUserProfileActivity activity = (CreateUserProfileActivity) getActivity();
             activity.setFormPhoneNumber(phoneNumberField.getText().toString());
-            activity.finalizeProfile();
+
+            ((CreateUserProfileActivity) getActivity()).goToStep(CreateUserProfileSteps.IntroProfilePictureFragment);
         });
     }
 

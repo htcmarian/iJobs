@@ -7,7 +7,6 @@ import androidx.fragment.app.FragmentPagerAdapter;
 public class CreateUserProfilePagerAdapter extends FragmentPagerAdapter {
 
 
-
     public CreateUserProfilePagerAdapter(FragmentManager fm) {
         super(fm);
     }
@@ -15,6 +14,7 @@ public class CreateUserProfilePagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
+
         switch (position) {
             case CreateUserProfileSteps.IntroBirthdateFragment:
                 return new IntroBirthdateFragment();
@@ -22,6 +22,8 @@ public class CreateUserProfilePagerAdapter extends FragmentPagerAdapter {
                 return new IntroAddressFragment();
             case CreateUserProfileSteps.IntroPhoneNumberFragment:
                 return new IntroPhoneNumberFragment();
+            case CreateUserProfileSteps.IntroProfilePictureFragment:
+                return new IntroProfilePictureFragment();
             default:
                 return null;
         }

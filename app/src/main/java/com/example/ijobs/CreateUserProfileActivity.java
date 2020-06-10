@@ -5,13 +5,17 @@ import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.widget.Toast;
 
 import com.example.ijobs.fragments.createUserProfile.CreateUserProfilePagerAdapter;
+import com.example.ijobs.services.AuthService;
 import com.example.ijobs.services.UserService;
 import com.example.ijobs.viewmodels.UserProfileViewModel;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.auth.User;
 
 import java.util.Date;
 
@@ -21,6 +25,8 @@ public class CreateUserProfileActivity extends AppCompatActivity {
     private PagerAdapter contentAdapter;
     protected UserProfileViewModel form;
     private UserService userService;
+    private AuthService authService;
+    private Bitmap userProfilePicture;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +35,7 @@ public class CreateUserProfileActivity extends AppCompatActivity {
 
         form = new UserProfileViewModel();
         userService = new UserService();
+        authService = new AuthService();
 
         initializeComponents();
     }
@@ -42,22 +49,30 @@ public class CreateUserProfileActivity extends AppCompatActivity {
     }
 
     public void finalizeProfile() {
-        Task<Void> finalizeProfileResult = userService.updateUserProfile(this.form);
+        FirebaseUser user = authService.getUser();
 
-        if (finalizeProfileResult == null) {
-            Toast.makeText(getApplicationContext(), "A intervenit o eroare", Toast.LENGTH_LONG);
-            return;
-        }
+        userService
+                .uploadUserProfilePicture(user.getUid().toString(), userProfilePicture)
+                .addOnSuccessListener(v -> {
+                    Task<Void> finalizeProfileResult = userService.updateUserProfile(this.form);
 
-        finalizeProfileResult
-                .addOnSuccessListener(aVoid -> {
-                    Intent goToMainScreen = new Intent(this, MainActivity.class);
-                    goToMainScreen.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                    startActivity(goToMainScreen);
+                    if (finalizeProfileResult == null) {
+                        Toast.makeText(getApplicationContext(), "A intervenit o eroare", Toast.LENGTH_LONG).show();
+                        return;
+                    }
+
+                    finalizeProfileResult
+                            .addOnSuccessListener(aVoid -> {
+                                Intent goToMainScreen = new Intent(this, MainActivity.class);
+                                goToMainScreen.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                startActivity(goToMainScreen);
+                            })
+                            .addOnFailureListener(e -> {
+                                Toast.makeText(getApplicationContext(), "A intervenit o eroare", Toast.LENGTH_LONG).show();
+                            });
                 })
-                .addOnFailureListener(e -> {
-                    Toast.makeText(getApplicationContext(), "A intervenit o eroare", Toast.LENGTH_LONG);
-                    return;
+                .addOnFailureListener(v -> {
+                    Toast.makeText(getApplicationContext(), "A intervenit o eroare", Toast.LENGTH_LONG).show();
                 });
     }
 
@@ -80,5 +95,9 @@ public class CreateUserProfileActivity extends AppCompatActivity {
 
     public void setFormName(String name) {
         form.setName(name);
+    }
+
+    public void setFormProfilePicture(Bitmap profilePictureBitmap) {
+        userProfilePicture = profilePictureBitmap;
     }
 }

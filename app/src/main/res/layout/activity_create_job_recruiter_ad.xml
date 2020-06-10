@@ -1,122 +1,120 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+<LinearLayout android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.jobRecruiter.CreateJobRecruiterAd">
-
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android">
     <TextView
         android:id="@+id/create_job_recruiter_ad_title"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
+        android:gravity="center"
         android:layout_height="wrap_content"
         android:text="@string/create_job_recruiter_ad_title"
+        android:textColor="@color/secondary"
         android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/create_job_recruiter_ad_city_inputText"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_marginTop="20dp"/>
 
     <EditText
         android:id="@+id/create_job_recruiter_ad_city_inputText"
         android:layout_width="333dp"
         android:layout_height="47dp"
-        android:layout_marginTop="56dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="40dp"
         android:autofillHints=""
+        android:backgroundTint="@color/secondary"
         android:ems="10"
         android:hint="@string/create_job_recruiter_ad_city_placeholderText"
         android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.474"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/create_job_recruiter_ad_title" />
+        android:textColor="@color/secondary" />
 
     <Spinner
         android:id="@+id/create_job_recruiter_ad_offered_service_input"
-        android:layout_width="332dp"
-        android:layout_height="46dp"
-        app:layout_constraintBottom_toTopOf="@+id/create_job_recruiter_ad_serviceOffered_errorLabel"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/create_job_recruiter_ad_city_inputText" />
+        android:layout_width="333dp"
+        android:layout_height="47dp"
+        android:tooltipText="Tip serviciu"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="40dp"
+        />
+    <TextView
+        android:id="@+id/create_job_recruiter_ad_serviceOffered_errorLabel"
+        android:layout_width="327dp"
+        android:layout_height="23dp"
+        android:layout_marginLeft="40dp"
+        android:text=""
+        android:textColor="@color/design_default_color_error" />
 
     <Spinner
         android:id="@+id/create_job_recruiter_ad_jobType_input"
-        android:layout_width="331dp"
-        android:layout_height="51dp"
-        android:layout_marginTop="28dp"
-        app:layout_constraintBottom_toTopOf="@+id/create_job_recruiter_ad_description_inputText"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/create_job_recruiter_ad_serviceOffered_errorLabel" />
+        android:layout_width="333dp"
+        android:layout_height="47dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="20dp"
+        />
 
     <TextView
         android:id="@+id/create_job_recruiter_ad_jobType_errorLabel"
-        android:layout_width="327dp"
-        android:layout_height="23dp"
+        android:layout_width="333dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="40dp"
         android:text=""
-        android:textColor="@color/design_default_color_error"
-        app:layout_constraintBottom_toTopOf="@+id/create_job_recruiter_ad_description_inputText"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/create_job_recruiter_ad_jobType_input" />
+        android:textColor="@color/design_default_color_error" />
 
     <EditText
         android:id="@+id/create_job_recruiter_ad_description_inputText"
         android:layout_width="336dp"
         android:layout_height="97dp"
-        android:layout_marginTop="52dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="40dp"
         android:autofillHints=""
+        android:backgroundTint="@color/secondary"
+        android:textColor="@color/secondary"
         android:ems="10"
         android:gravity="start|top"
         android:hint="@string/create_job_recruiter_ad_descriptionPlaceholderText"
         android:inputType="textMultiLine"
-        android:lines="3"
-        app:layout_constraintBottom_toTopOf="@+id/create_job_recruiter_ad_requiredSkills_input"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/create_job_recruiter_ad_jobType_input" />
+        android:lines="3"/>
 
     <EditText
         android:id="@+id/create_job_recruiter_ad_requiredSkills_input"
         android:layout_width="338dp"
         android:layout_height="115dp"
+
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="40dp"
         android:autofillHints=""
+        android:backgroundTint="@color/secondary"
         android:ems="10"
         android:gravity="start|top"
         android:hint="@string/create_job_recruiter_ad_requiredSkillsPlaceholderText"
         android:inputType="textMultiLine"
         android:lines="3"
-        app:layout_constraintBottom_toTopOf="@+id/create_job_recruiter_saveAd_button"
+        android:textColor="@color/secondary" />
+
+
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/coordinatorLayout4"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/create_job_recruiter_ad_description_inputText" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <Button
-        android:id="@+id/create_job_recruiter_saveAd_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="onCreateJobRecruiterAdButtonClick"
-        android:text="@string/create_job_recruiter_ad_create_button_text"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/create_job_recruiter_ad_requiredSkills_input" />
+        <com.google.android.material.bottomappbar.BottomAppBar
+            android:id="@+id/create_job_recruiter_ad_BottomBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:backgroundTint="@color/colorPrimaryDark" />
 
-    <TextView
-        android:id="@+id/create_job_recruiter_ad_serviceOffered_errorLabel"
-        android:layout_width="327dp"
-        android:layout_height="23dp"
-        android:layout_marginTop="16dp"
-        android:text=""
-        android:textColor="@color/design_default_color_error"
-        app:layout_constraintBottom_toTopOf="@+id/create_job_recruiter_ad_jobType_input"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/create_job_recruiter_ad_offered_service_input" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/create_job_recruiter_saveAd_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/secondary"
+            android:onClick="onCreateJobRecruiterAdButtonClick"
+            app:layout_anchor="@id/create_job_recruiter_ad_BottomBar"
+            app:srcCompat="@drawable/ic_save_secondary_24dp" />
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</LinearLayout>
