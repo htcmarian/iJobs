@@ -70,7 +70,7 @@ public class UserService {
 
         FirebaseStorage storage = FirebaseStorage.getInstance();
 
-        StorageReference storageReference = storage.getReference("profilePictures/" + userId + ".jpeg");
+        StorageReference storageReference = storage.getReference().child("profilePictures/" + userId + ".jpeg");
 
         return storageReference.putBytes(data);
     }

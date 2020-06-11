@@ -6,108 +6,107 @@
     android:layout_height="match_parent"
     tools:context=".activities.jobSeeker.CreateJobSeekerProfileActivity">
 
-    <ScrollView
-        android:layout_width="367dp"
-        android:layout_height="669dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+    <LinearLayout
+        android:id="@+id/linearLayout4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-        <LinearLayout
-            android:id="@+id/linearLayout4"
+        <TextView
+            android:layout_width="match_parent"
+            android:padding="20dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Creeaza profil Job Seeker"
+            android:textColor="@color/secondary"
+            android:textSize="20sp"
+            android:textStyle="bold"></TextView>
+
+        <TextView
+            android:id="@+id/create_job_seeker_profile_servicesOfferred_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:gravity="center"
+            android:text="@string/create_job_seeker_profile_servicesOffered_textViewTitle"
+            android:textColor="@color/secondary"
+            android:textSize="18sp"
+            android:layout_marginTop="30dp"
+            tools:layout_conversion_absoluteHeight="27dp"
+            tools:layout_conversion_absoluteWidth="147dp"
+            tools:layout_editor_absoluteX="22dp"
+            tools:layout_editor_absoluteY="75dp" />
+
+        <ListView
+            android:id="@+id/create_job_seeker_profile_services_list"
+            android:layout_width="wrap_content"
+            android:layout_height="200dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:baselineAligned="false"
+            tools:layout_conversion_absoluteHeight="320dp"
+            tools:layout_conversion_absoluteWidth="410dp"
+            tools:layout_editor_absoluteX="22dp"
+            tools:layout_editor_absoluteY="123dp">
+
+        </ListView>
+
+        <EditText
+            android:id="@+id/create_job_seeker_profile_pastExperience_textInput"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:ems="10"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:gravity="start|top"
+            android:backgroundTint="@color/secondary"
+            android:textColor="@color/secondary"
+            android:layout_marginTop="20dp"
+            android:hint="@string/create_job_seeker_profile_previousExperience_hintText"
+            android:inputType="textMultiLine"
+            android:lines="3"/>
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="Creeaza profil Job Seeker"
-                android:textColor="@color/secondary"
-                android:textSize="20sp"
-                android:textStyle="bold"></TextView>
+        <EditText
+            android:id="@+id/create_job_seeker_profile_previousJobs_textInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:gravity="start|top"
+            android:hint="@string/create_job_seeker_profile_previousJobsHintText"
+            android:layout_marginTop="15dp"
+            android:backgroundTint="@color/secondary"
+            android:textColor="@color/secondary"
+            android:inputType="textMultiLine"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:lines="3"
+            tools:layout_conversion_absoluteHeight="88dp"
+            tools:layout_conversion_absoluteWidth="367dp"
+            tools:layout_editor_absoluteX="22dp"
+            tools:layout_editor_absoluteY="591dp" />
 
-            <TextView
-                android:id="@+id/create_job_seeker_profile_servicesOfferred_textView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="@string/create_job_seeker_profile_servicesOffered_textViewTitle"
-                android:textColor="@color/secondary"
-                android:textSize="18sp"
-                android:layout_marginTop="30dp"
-                tools:layout_conversion_absoluteHeight="27dp"
-                tools:layout_conversion_absoluteWidth="147dp"
-                tools:layout_editor_absoluteX="22dp"
-                tools:layout_editor_absoluteY="75dp" />
+        <EditText
+            android:id="@+id/create_job_seeker_profile_skills_textInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:gravity="start|top"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:hint="@string/create_job_seeker_profile_skills_hintText"
+            android:layout_marginTop="15dp"
+            android:backgroundTint="@color/secondary"
+            android:textColor="@color/secondary"
+            android:inputType="textMultiLine"
+            android:lines="3"
+            tools:layout_conversion_absoluteHeight="88dp"
+            tools:layout_conversion_absoluteWidth="367dp"
+            tools:layout_editor_absoluteX="22dp"
+            tools:layout_editor_absoluteY="699dp" />
+    </LinearLayout>
 
-            <ListView
-                android:id="@+id/create_job_seeker_profile_services_list"
-                android:layout_width="wrap_content"
-                android:layout_height="200dp"
-                android:layout_marginTop="10dp"
-                android:baselineAligned="false"
-                tools:layout_conversion_absoluteHeight="320dp"
-                tools:layout_conversion_absoluteWidth="410dp"
-                tools:layout_editor_absoluteX="22dp"
-                tools:layout_editor_absoluteY="123dp">
-
-            </ListView>
-
-            <EditText
-                android:id="@+id/create_job_seeker_profile_pastExperience_textInput"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:gravity="start|top"
-                android:backgroundTint="@color/secondary"
-                android:textColor="@color/secondary"
-                android:layout_marginTop="20dp"
-                android:hint="@string/create_job_seeker_profile_previousExperience_hintText"
-                android:inputType="textMultiLine"
-                android:lines="3"
-                tools:layout_conversion_absoluteHeight="88dp"
-                tools:layout_conversion_absoluteWidth="367dp"
-                tools:layout_editor_absoluteX="22dp"
-                tools:layout_editor_absoluteY="483dp" />
-
-            <EditText
-                android:id="@+id/create_job_seeker_profile_previousJobs_textInput"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:gravity="start|top"
-                android:hint="@string/create_job_seeker_profile_previousJobsHintText"
-                android:layout_marginTop="15dp"
-                android:backgroundTint="@color/secondary"
-                android:textColor="@color/secondary"
-                android:inputType="textMultiLine"
-                android:lines="3"
-                tools:layout_conversion_absoluteHeight="88dp"
-                tools:layout_conversion_absoluteWidth="367dp"
-                tools:layout_editor_absoluteX="22dp"
-                tools:layout_editor_absoluteY="591dp" />
-
-            <EditText
-                android:id="@+id/create_job_seeker_profile_skills_textInput"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:gravity="start|top"
-                android:hint="@string/create_job_seeker_profile_skills_hintText"
-                android:layout_marginTop="15dp"
-                android:backgroundTint="@color/secondary"
-                android:textColor="@color/secondary"
-                android:inputType="textMultiLine"
-                android:lines="3"
-                tools:layout_conversion_absoluteHeight="88dp"
-                tools:layout_conversion_absoluteWidth="367dp"
-                tools:layout_editor_absoluteX="22dp"
-                tools:layout_editor_absoluteY="699dp" />
-        </LinearLayout>
-    </ScrollView>
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:id="@+id/coordinatorLayout4"
         android:layout_width="match_parent"

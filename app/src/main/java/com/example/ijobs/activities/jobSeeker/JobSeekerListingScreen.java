@@ -13,7 +13,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.ijobs.R;
 import com.example.ijobs.activities.jobSeeker.fragments.JobSeekerListAdapter;
+import com.example.ijobs.data.User;
 import com.example.ijobs.services.JobSeekerService;
+import com.example.ijobs.services.UserService;
 import com.example.ijobs.viewmodels.JobPostViewModel;
 import com.yuyakaido.android.cardstackview.CardStackLayoutManager;
 import com.yuyakaido.android.cardstackview.CardStackListener;
@@ -22,6 +24,7 @@ import com.yuyakaido.android.cardstackview.Direction;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class JobSeekerListingScreen extends AppCompatActivity {
     private ListView jobPostsList;
@@ -34,6 +37,7 @@ public class JobSeekerListingScreen extends AppCompatActivity {
     private ArrayList<JobPostViewModel> jobPosts;
     private CardStackView jobCardStackView;
     private int currentJobIndex = 0;
+    private UserService userService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +45,7 @@ public class JobSeekerListingScreen extends AppCompatActivity {
         setContentView(R.layout.activity_job_seeker_listing_screen);
 
         jobSeekerService = new JobSeekerService();
+        userService = new UserService();
         jobPosts = new ArrayList<>();
 
         initializeComponents();
@@ -50,15 +55,22 @@ public class JobSeekerListingScreen extends AppCompatActivity {
 
     private void loadJobPosts() {
         Thread t = new Thread(() -> {
+
             jobSeekerService.getRecommendedJobPosts(filterJobType, filterServiceType).addOnFailureListener(command -> {
                 Toast.makeText(getApplicationContext(), "A intervenit o eroare", Toast.LENGTH_LONG).show();
             }).addOnSuccessListener(command -> {
                 List<JobPostViewModel> data = command.toObjects(JobPostViewModel.class);
 
-                jobPosts.clear();
-                jobPosts.addAll(data);
+                userService.getCurrentUser() .addOnSuccessListener(documentSnapshot -> {
+                    User user = documentSnapshot.toObject(User.class);
+                    List<String> userServicesOffered = user.getJobSeekerCv().getServicesOffered();
+                    List<JobPostViewModel> jobsToDisplay = data.stream().filter(v -> userServicesOffered.contains(v.getServiceRequired())).collect(Collectors.toList());
 
-                adapter.notifyDataSetChanged();
+                    jobPosts.clear();
+                    jobPosts.addAll(jobsToDisplay);
+
+                    adapter.notifyDataSetChanged();
+                });
             });
         });
 
@@ -91,8 +103,16 @@ public class JobSeekerListingScreen extends AppCompatActivity {
                 }
 
                 if(Direction.HORIZONTAL.contains(direction)){
-                    currentJobIndex++;
+                    if(currentJobIndex == jobPosts.size()-1){
+                        currentJobIndex = 0;
+                        adapter.notifyDataSetChanged();
+                    }
+                    else{
+                        currentJobIndex++;
+                    }
                 }
+
+
             }
 
             @Override

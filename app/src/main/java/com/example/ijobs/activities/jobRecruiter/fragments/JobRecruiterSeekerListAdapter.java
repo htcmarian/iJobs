@@ -11,15 +11,16 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.ijobs.R;
 import com.example.ijobs.activities.jobRecruiter.JobRecruiterSeekerDetailsActivity;
-import com.example.ijobs.activities.jobSeeker.JobSeekerJobDetailsActivity;
 import com.example.ijobs.services.ImageProvider;
 import com.example.ijobs.viewmodels.jobRecruiter.JobRecruiterSeekerViewModel;
+import com.google.android.gms.tasks.OnSuccessListener;
 
 import java.util.List;
 
-public class JobRecruiterSeekerListAdapter extends ArrayAdapter<JobRecruiterSeekerViewModel>{
+public class JobRecruiterSeekerListAdapter extends ArrayAdapter<JobRecruiterSeekerViewModel> {
     private final Context context;
     private final JobRecruiterSeekerViewModel[] values;
 
@@ -39,19 +40,25 @@ public class JobRecruiterSeekerListAdapter extends ArrayAdapter<JobRecruiterSeek
         TextView nameTextView = rowView.findViewById(R.id.job_recruiter_list_seeker_list_item_name);
         TextView locationTextView = rowView.findViewById(R.id.job_recruiter_list_seeker_list_item_location);
         TextView servicesOfferedTextView = rowView.findViewById(R.id.job_recruiter_list_seeker_list_item_servicesOffered);
-        ImageView serviceOfferedImageView = rowView.findViewById(R.id.job_recruiter_list_seeker_list_item_jobTypeImage);
+        ImageView seekerProfilePicture = rowView.findViewById(R.id.job_recruiter_list_seeker_list_item_jobTypeImage);
 
         String name = values[position].getName();
         String location = values[position].getCity();
         List<String> servicesOffered = values[position].getServicesOffered();
-        String servicesOfferedEnumeration = String.join(", ", servicesOffered).trim();
-        String serviceOfferedImageName = servicesOfferedEnumeration.contains(",") ? "multiple" : servicesOfferedEnumeration;
-        Uri imageUrl = ImageProvider.getImageUri(serviceOfferedImageName);
+
+        ImageProvider
+                .getUserProfilePicture(values[position].getUserId())
+                .getDownloadUrl()
+                .addOnSuccessListener(new OnSuccessListener<Uri>() {
+                    @Override
+                    public void onSuccess(Uri uri) {
+                        Glide.with(context).load(uri).into(seekerProfilePicture);
+                    }
+                });
 
         nameTextView.setText(name);
         locationTextView.setText(location);
         servicesOfferedTextView.setText(String.join(", ", servicesOffered));
-        serviceOfferedImageView.setImageURI(imageUrl);
 
         rowView.setOnClickListener(v -> {
             Intent jobRecruiterSeekerDetailsActivity = new Intent(getContext(), JobRecruiterSeekerDetailsActivity.class);

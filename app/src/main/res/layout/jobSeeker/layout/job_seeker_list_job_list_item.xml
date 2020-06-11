@@ -22,6 +22,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:background="@android:color/transparent"
             android:scaleType="centerCrop"
             app:srcCompat="@drawable/common_full_open_on_phone"></ImageView>
 

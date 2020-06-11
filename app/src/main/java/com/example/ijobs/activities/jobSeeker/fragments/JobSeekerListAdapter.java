@@ -1,7 +1,6 @@
 package com.example.ijobs.activities.jobSeeker.fragments;
 
 import android.content.Context;
-import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -41,7 +40,7 @@ public class JobSeekerListAdapter extends RecyclerView.Adapter<JobSeekerListAdap
         holder.jobTitleTextView.setText(job.getJobDescription());
         holder.jobTypeTextView.setText(job.getJobType());
         holder.jobLocationTextView.setText(job.getCity());
-        holder.jobServiceRequiredImageView.setImageURI(ImageProvider.getImageUri(job.getServiceRequiredImageThumbnail()));
+        holder.jobServiceRequiredImageView.setImageURI(ImageProvider.getLocalImageUri(job.getServiceRequiredImageThumbnail()));
     }
 
     @Override

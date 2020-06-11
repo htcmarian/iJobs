@@ -16,6 +16,7 @@ import com.example.ijobs.services.AuthService;
 import com.example.ijobs.services.UserService;
 import com.example.ijobs.viewmodels.JobSeekerProfileViewModel;
 import com.example.ijobs.viewmodels.ServiceOfferListItemViewModel;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.Arrays;
 import java.util.List;
@@ -28,7 +29,7 @@ public class CreateJobSeekerProfileActivity extends AppCompatActivity {
     private EditText skillsField;
     private IntroServicesListAdapter adapter;
     private ServiceOfferListItemViewModel[] listItems;
-    private Button finalizeProfileButton;
+    private FloatingActionButton finalizeProfileButton;
     private UserService userService;
     private AuthService authService;
 
@@ -106,7 +107,7 @@ public class CreateJobSeekerProfileActivity extends AppCompatActivity {
             isValid = false;
         }
         if (skillsField.getText().toString().isEmpty()) {
-            pastJobsField.setError("Specificati abilitatile dvs.");
+            skillsField.setError("Specificati abilitatile dvs.");
             isValid = false;
         }
 

@@ -3,10 +3,8 @@ package com.example.ijobs.activities.jobSeeker;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.media.Image;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -21,8 +19,6 @@ import com.example.ijobs.services.JobSeekerService;
 import com.example.ijobs.services.UserService;
 import com.example.ijobs.viewmodels.JobPostViewModel;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-
-import java.util.List;
 
 public class JobSeekerJobDetailsActivity extends AppCompatActivity {
 
@@ -99,8 +95,9 @@ public class JobSeekerJobDetailsActivity extends AppCompatActivity {
                 serviceRequiredTextView.setText(data.getServiceRequired());
                 skillsRequiredTextView.setText(data.getSkillsRequired());
                 addedByUserId = data.getCreatedBy();
-                jobTypeIcon.setImageURI(ImageProvider.getImageUri(jobTypeImageName));
-                serviceRequiredIcon.setImageURI(ImageProvider.getImageUri(data.getServiceRequiredImageThumbnail()));
+                jobTypeIcon.setImageURI(ImageProvider.getLocalImageUri(jobTypeImageName));
+                serviceRequiredIcon.setImageURI(ImageProvider.getLocalImageUri(data.getServiceRequiredImageThumbnail()));
+
 
                 userService
                         .getUserDetails(data.getCreatedBy())

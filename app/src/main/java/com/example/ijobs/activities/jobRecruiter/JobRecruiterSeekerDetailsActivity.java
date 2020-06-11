@@ -9,8 +9,10 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.example.ijobs.R;
 import com.example.ijobs.data.User;
+import com.example.ijobs.services.ImageProvider;
 import com.example.ijobs.services.UserService;
 import com.example.ijobs.viewmodels.JobPostViewModel;
 import com.example.ijobs.viewmodels.UserProfileViewModel;
@@ -30,6 +32,7 @@ public class JobRecruiterSeekerDetailsActivity extends AppCompatActivity {
     private ImageView locationLabel;
     private ProgressBar loadingSpinner;
     private UserService userService;
+    private ImageView profilePicture;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +59,7 @@ public class JobRecruiterSeekerDetailsActivity extends AppCompatActivity {
         locationTextView = findViewById(R.id.job_recruiter_seeker_profile_locationTextView);
         locationLabel = findViewById(R.id.job_recruiter_seeker_profile_locationLabel);
         loadingSpinner = findViewById(R.id.job_recruiter_seeker_profile_loadingSpinner);
+        profilePicture = findViewById(R.id.job_recruiter_seeker_profile_picture);
     }
 
     private void loadSeekerProfile() {
@@ -88,6 +92,11 @@ public class JobRecruiterSeekerDetailsActivity extends AppCompatActivity {
                 locationTextView.setText(data.getUserProfile().getAddress() + "," + data.getUserProfile().getCity());
 
                 loadingSpinner.setVisibility(View.GONE);
+
+                ImageProvider.getUserProfilePicture(data.getUserId()).getDownloadUrl().addOnSuccessListener(imageUri -> {
+                    Glide.with(JobRecruiterSeekerDetailsActivity.this).load(imageUri).into(profilePicture);
+                });
+
             });
         });
 
