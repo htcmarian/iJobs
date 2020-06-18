@@ -54,7 +54,9 @@
             android:layout_centerVertical="true"
             android:layout_toLeftOf="@+id/send_message_sendTextButton"
             android:background="@android:color/transparent"
-            android:hint="Type a message...">
+            android:hint="Type a message..."
+            android:textColor="#000000"
+            android:textColorHint="#FFFFFF">
 
         </EditText>
 

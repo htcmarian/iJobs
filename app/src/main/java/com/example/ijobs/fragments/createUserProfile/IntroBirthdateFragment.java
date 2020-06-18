@@ -93,7 +93,7 @@ public class IntroBirthdateFragment extends Fragment {
         }
 
         if(name.isEmpty()){
-            nameInput.setError("Nu ati specificat anul nasterii");
+            nameInput.setError("Nu ati specificat numele");
             isValid = false;
         }
 

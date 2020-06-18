@@ -64,7 +64,6 @@ public class IntroProfilePictureFragment extends Fragment {
             else{
                 capturePicture();
             }
-
         });
 
         materialToolbar.setNavigationOnClickListener(v -> {
